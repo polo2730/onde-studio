@@ -3,385 +3,327 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Onde Studio — Du contenu qui convertit. Vraiment.</title>
-<meta name="description" content="Onde Studio produit des vidéos UGC authentiques avec de vraies créatrices belges et françaises — pour vos Reels, TikToks et Ads.">
+<title>Onde Studio — UGC de performance pour marques DTC</title>
+<meta name="description" content="Onde Studio : vidéos UGC de performance avec de vraies créatrices spécialisées par secteur. Créas testées et optimisées sur la data, pour les marques DTC qui scalent en pub.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Monochrome */
-    --ink:      #0B0B0C;
-    --ink-2:    #151517;
-    --ink-3:    #1E1E21;
-    --paper:    #FAFAF8;
-    --paper-2:  #F0EFEB;
-    --paper-3:  #E6E4DE;
-
-    /* Texte / lignes sur fond sombre */
-    --on-dark:      #FAFAF8;
-    --on-dark-mut:  rgba(250,250,248,0.58);
-    --on-dark-dim:  rgba(250,250,248,0.36);
-    --line-d:       rgba(250,250,248,0.12);
-    --line-d-2:     rgba(250,250,248,0.22);
-
-    /* Texte / lignes sur fond clair */
-    --on-light:     #0B0B0C;
-    --on-light-mut: rgba(11,11,12,0.56);
-    --on-light-dim: rgba(11,11,12,0.34);
-    --line-l:       rgba(11,11,12,0.12);
-    --line-l-2:     rgba(11,11,12,0.20);
-
-    /* Accent dégradé (subtil) */
-    --acc-1: #6E8BFF;
-    --acc-2: #C4B5FD;
-    --grad:  linear-gradient(90deg, #6E8BFF 0%, #C4B5FD 100%);
-
-    --font-body:    'Inter', system-ui, sans-serif;
-    --font-display: 'Space Grotesk', 'Inter', sans-serif;
-    --max: 1180px;
-    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --ink:#0B0B0C; --ink-2:#141416; --ink-3:#1C1C1F;
+    --paper:#FAFAF8; --paper-2:#F0EFEB;
+    --on-dark:#FAFAF8; --on-dark-mut:rgba(250,250,248,0.58); --on-dark-dim:rgba(250,250,248,0.34);
+    --line-d:rgba(250,250,248,0.12); --line-d-2:rgba(250,250,248,0.22);
+    --on-light:#0B0B0C; --on-light-mut:rgba(11,11,12,0.56); --on-light-dim:rgba(11,11,12,0.32);
+    --line-l:rgba(11,11,12,0.12); --line-l-2:rgba(11,11,12,0.20);
+    --acc-1:#6E8BFF; --acc-2:#C4B5FD; --grad:linear-gradient(90deg,#6E8BFF 0%,#C4B5FD 100%);
+    --ok:#1c8f55;
+    --font-body:'Inter',system-ui,sans-serif; --font-display:'Space Grotesk','Inter',sans-serif;
+    --max:1180px; --ease:cubic-bezier(0.16,1,0.3,1);
   }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{font-family:var(--font-body);background:var(--ink);color:var(--on-dark);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;} img,svg{display:block;}
+  ::selection{background:rgba(110,139,255,0.25);}
+  ::-webkit-scrollbar{width:9px;} ::-webkit-scrollbar-track{background:var(--ink);} ::-webkit-scrollbar-thumb{background:var(--ink-3);border-radius:10px;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;position:relative;z-index:2;}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body {
-    font-family: var(--font-body);
-    background: var(--ink);
-    color: var(--on-dark);
-    line-height: 1.6;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
+  .sec{position:relative;padding:120px 0;overflow:hidden;}
+  .sec.dark{background:var(--ink);color:var(--on-dark);}
+  .sec.light{background:var(--paper);color:var(--on-light);}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:22px;opacity:.85;}
+  .eyebrow::before{content:'';width:22px;height:2px;border-radius:2px;background:var(--grad);}
+
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;letter-spacing:-0.025em;}
+  .acc{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+
+  .sec-head{max-width:760px;margin:0 auto 64px;text-align:center;}
+  .sec-head h2{font-size:clamp(32px,4.6vw,52px);margin-bottom:18px;}
+  .sec-head p{font-size:17px;}
+  .sec.dark .sec-head p{color:var(--on-dark-mut);} .sec.light .sec-head p{color:var(--on-light-mut);}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--font-body);font-size:14px;font-weight:600;padding:15px 30px;border-radius:100px;border:1px solid transparent;cursor:pointer;transition:transform var(--ease) .4s,box-shadow var(--ease) .4s,background .3s,color .3s,border-color .3s;white-space:nowrap;}
+  .arrow{transition:transform .3s var(--ease);} .btn:hover .arrow{transform:translateX(4px);}
+  .dark .btn-solid{background:var(--paper);color:var(--ink);} .light .btn-solid{background:var(--ink);color:var(--paper);}
+  .btn-solid:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,0.28);}
+  .dark .btn-line{border-color:var(--line-d-2);color:var(--on-dark);} .dark .btn-line:hover{background:rgba(250,250,248,0.06);border-color:var(--on-dark);transform:translateY(-3px);}
+  .light .btn-line{border-color:var(--line-l-2);color:var(--on-light);} .light .btn-line:hover{background:rgba(11,11,12,0.04);border-color:var(--on-light);transform:translateY(-3px);}
+  .btn-grad{background:var(--grad);color:#0B0B0C;box-shadow:0 8px 30px rgba(110,139,255,0.25);} .btn-grad:hover{transform:translateY(-3px);box-shadow:0 14px 44px rgba(110,139,255,0.4);}
+  .btn-full{width:100%;}
+
+  /* Nav */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent;}
+  nav.scrolled{background:rgba(11,11,12,0.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--line-d);}
+  .nav-inner{max-width:var(--max);margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-family:var(--font-display);font-size:21px;font-weight:700;letter-spacing:-0.02em;color:var(--on-dark);display:flex;align-items:center;gap:8px;}
+  .logo .wave{width:30px;height:14px;display:inline-block;}
+  .nav-links{display:flex;align-items:center;gap:30px;}
+  .nav-links a{font-size:14px;font-weight:500;color:var(--on-dark-mut);transition:color .25s;}
+  .nav-links a:hover{color:var(--on-dark);}
+  .nav-cta{font-size:13px;font-weight:600;padding:10px 20px;border-radius:100px;border:1px solid var(--line-d-2);color:var(--on-dark);transition:all .3s;}
+  .nav-cta:hover{background:var(--paper);color:var(--ink);border-color:transparent;}
+  .nav-toggle{display:none;background:none;border:none;color:var(--on-dark);cursor:pointer;}
+
+  /* Wave field */
+  .wavefield{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+  .wavefield path{fill:none;}
+  .wv-row{will-change:transform;}
+  @keyframes flow{from{transform:translateX(0);}to{transform:translateX(-480px);}}
+
+  /* Hero */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:150px 0 90px;background:var(--ink);}
+  .hero .wavefield path{stroke:var(--on-dark);}
+  .hero-glow{position:absolute;width:680px;height:680px;border-radius:50%;top:-200px;right:-160px;background:radial-gradient(circle,rgba(110,139,255,0.16),transparent 65%);filter:blur(40px);z-index:0;}
+  .hero-inner{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;width:100%;}
+  .hero-pill{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:500;color:var(--on-dark-mut);border:1px solid var(--line-d);border-radius:100px;padding:8px 16px;margin-bottom:28px;background:rgba(250,250,248,0.02);}
+  .hero-pill .dot{width:7px;height:7px;border-radius:50%;background:#6EE7A8;box-shadow:0 0 0 0 rgba(110,231,168,0.5);animation:pulse 2.2s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(110,231,168,0.5);}70%{box-shadow:0 0 0 8px rgba(110,231,168,0);}100%{box-shadow:0 0 0 0 rgba(110,231,168,0);}}
+  .hero h1{font-size:clamp(42px,6.2vw,74px);margin-bottom:24px;}
+  .hero-sub{font-size:18px;color:var(--on-dark-mut);max-width:520px;margin-bottom:36px;line-height:1.65;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-meta{display:flex;gap:34px;margin-top:48px;flex-wrap:wrap;}
+  .hero-meta .num{font-family:var(--font-display);font-size:24px;font-weight:700;}
+  .hero-meta .lbl{font-size:13px;color:var(--on-dark-dim);max-width:130px;}
+
+  .panel{position:relative;background:var(--ink-2);border:1px solid var(--line-d);border-radius:18px;padding:26px;box-shadow:0 30px 80px rgba(0,0,0,0.5);}
+  .panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;}
+  .panel-title{font-family:var(--font-display);font-size:14px;font-weight:600;}
+  .panel-tag{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:.04em;padding:4px 11px;border-radius:100px;background:var(--grad);color:#0B0B0C;}
+  .spark{width:100%;height:120px;margin-bottom:18px;}
+  .spark path.line{fill:none;stroke:url(#ondeGrad);stroke-width:2.5;stroke-linecap:round;}
+  .spark path.area{fill:url(#areaGrad);stroke:none;opacity:0;transition:opacity 1.2s ease;}
+  .spark .dot{fill:var(--paper);}
+  .panel-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .panel-stat{border:1px solid var(--line-d);border-radius:12px;padding:12px;}
+  .panel-stat .v{font-family:var(--font-display);font-size:19px;font-weight:700;}
+  .panel-stat .l{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--on-dark-dim);margin-top:3px;}
+
+  /* Marquee */
+  .proof{padding:54px 0;}
+  .proof-label{text-align:center;font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--on-light-dim);margin-bottom:28px;}
+  .marquee{display:flex;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);}
+  .marquee-track{display:flex;gap:56px;padding-right:56px;animation:scroll 28s linear infinite;flex-shrink:0;}
+  @keyframes scroll{to{transform:translateX(-100%);}}
+  .proof:hover .marquee-track{animation-play-state:paused;}
+  .proof-item{font-family:var(--font-display);font-size:26px;font-weight:600;color:var(--on-light-dim);display:flex;align-items:center;gap:12px;white-space:nowrap;transition:color .3s;}
+  .proof-item:hover{color:var(--on-light);}
+
+  /* Stats band */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:42px;}
+  .stat-card{border:1px solid var(--line-d);border-radius:18px;padding:38px 30px;text-align:center;position:relative;overflow:hidden;transition:border-color .4s,transform .4s var(--ease);}
+  .stat-card:hover{transform:translateY(-6px);border-color:var(--line-d-2);}
+  .stat-big{font-family:var(--font-display);font-size:58px;font-weight:700;line-height:1;margin-bottom:14px;}
+  .stat-card p{font-size:15px;color:var(--on-dark-mut);}
+  .stat-wave{position:absolute;left:0;right:0;bottom:0;height:28px;opacity:.5;}
+  .stat-wave path{fill:none;stroke:url(#ondeGrad);stroke-width:1.5;}
+  .why-para{max-width:720px;margin:0 auto;text-align:center;font-size:17px;color:var(--on-dark-mut);}
+
+  /* Boucle Onde (method loop) */
+  .loop-wrap{display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:center;}
+  .loop-vis{position:relative;width:100%;max-width:420px;margin:0 auto;aspect-ratio:1;}
+  .loop-ring{position:absolute;inset:0;}
+  .loop-ring circle{fill:none;stroke:var(--line-l);stroke-width:1.5;}
+  .loop-ring .spin{stroke:url(#ondeGrad);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:60 1000;transform-origin:center;animation:spin 6s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .loop-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+  .loop-center .lc-k{font-family:var(--font-display);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--on-light-dim);}
+  .loop-center .lc-t{font-family:var(--font-display);font-size:26px;font-weight:700;margin-top:4px;}
+  .loop-node{position:absolute;width:46px;height:46px;border-radius:50%;background:var(--ink);color:var(--paper);border:1px solid var(--line-l-2);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:14px;transform:translate(-50%,-50%);}
+  .loop-node.on{background:var(--grad);color:#0B0B0C;border-color:transparent;}
+  .loop-steps{list-style:none;display:flex;flex-direction:column;gap:4px;}
+  .loop-step{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid var(--line-l);}
+  .loop-step:last-child{border-bottom:none;}
+  .loop-step .ls-n{font-family:var(--font-display);font-weight:700;font-size:14px;color:var(--acc-1);min-width:28px;}
+  .loop-step h3{font-size:18px;margin-bottom:4px;}
+  .loop-step p{font-size:14px;color:var(--on-light-mut);}
+
+  /* Matching */
+  .match-grid{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:18px;align-items:center;margin-top:10px;}
+  .match-card{border:1px solid var(--line-l);border-radius:16px;padding:26px 22px;text-align:center;background:var(--paper);}
+  .match-card .mc-k{font-family:var(--font-display);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--on-light-dim);margin-bottom:12px;}
+  .match-card .mc-t{font-family:var(--font-display);font-size:19px;font-weight:700;margin-bottom:8px;}
+  .match-card p{font-size:13px;color:var(--on-light-mut);}
+  .match-card.mid{background:var(--ink);color:var(--on-dark);border-color:var(--ink);}
+  .match-card.mid .mc-k{color:var(--on-dark-dim);}
+  .match-arrow{width:40px;height:20px;}
+  .match-arrow path{fill:none;stroke:url(#ondeGrad);stroke-width:2;stroke-linecap:round;}
+  .match-list{display:flex;flex-direction:column;gap:12px;max-width:560px;margin:44px auto 0;}
+  .match-feat{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--on-light-mut);}
+  .match-feat .ck{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;flex-shrink:0;}
+
+  /* Creators */
+  .creators-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .creator{border:1px solid var(--line-d);border-radius:18px;padding:28px;text-align:center;transition:transform .4s var(--ease),border-color .4s,background .4s;}
+  .creator:hover{transform:translateY(-6px);border-color:var(--line-d-2);background:rgba(250,250,248,0.02);}
+  .c-avatar{width:78px;height:78px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--paper);background:linear-gradient(140deg,#2a2a2e,#0b0b0c);position:relative;}
+  .c-avatar::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--line-d-2);}
+  .creator h3{font-size:19px;margin-bottom:8px;}
+  .c-spec{font-family:var(--font-display);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc-2);margin-bottom:12px;}
+  .c-niches{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:14px;}
+  .c-tag{font-size:11px;font-weight:600;color:var(--on-dark-mut);border:1px solid var(--line-d);padding:4px 11px;border-radius:100px;}
+  .c-bio{font-size:14px;color:var(--on-dark-mut);margin-bottom:14px;}
+  .c-verified{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--on-dark-mut);}
+
+  /* Results + algo decoder */
+  .results-inner{display:grid;grid-template-columns:0.92fr 1.08fr;gap:56px;align-items:center;}
+  .results-copy h2{font-size:clamp(28px,4vw,44px);margin-bottom:20px;}
+  .results-copy p{font-size:16px;color:var(--on-light-mut);margin-bottom:18px;}
+  .results-kicker{margin-top:8px;font-weight:500;}
+  .chart-card{border:1px solid var(--line-l);border-radius:20px;padding:26px;background:var(--paper);box-shadow:0 24px 60px rgba(11,11,12,0.08);}
+  .chart-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+  .chart-title{font-family:var(--font-display);font-weight:600;font-size:15px;}
+  .chart-tag{font-family:var(--font-display);font-size:11px;font-weight:600;color:var(--ok);background:rgba(28,143,85,0.1);padding:4px 10px;border-radius:100px;}
+  .chart-sub{font-size:12px;color:var(--on-light-dim);margin-bottom:18px;}
+  .chart-svg{width:100%;height:190px;}
+  .chart-svg .grid line{stroke:var(--line-l);stroke-width:1;}
+  .chart-svg .axis{fill:var(--on-light-dim);font-family:'Space Grotesk';font-size:11px;}
+  .chart-svg path.cline{fill:none;stroke:url(#ondeGrad);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+  .chart-svg path.carea{fill:url(#areaGradL);stroke:none;opacity:0;transition:opacity 1.4s ease .3s;}
+  .chart-svg .cdot{fill:var(--ink);} .chart-svg .cdot-end{fill:var(--acc-1);}
+
+  .decoder{margin-top:30px;display:flex;flex-direction:column;gap:18px;}
+  .decoder-h{font-family:var(--font-display);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-light-dim);}
+  .meter{}
+  .meter-top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:7px;}
+  .meter-top .ml{font-weight:600;} .meter-top .mv{color:var(--on-light-mut);font-family:var(--font-display);}
+  .meter-bar{height:8px;border-radius:100px;background:var(--paper-2);overflow:hidden;}
+  .meter-fill{height:100%;width:0;border-radius:100px;background:var(--grad);transition:width 1.3s var(--ease);}
+
+  /* Partnership timeline */
+  .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line-d);margin-top:10px;}
+  .tl-step{padding:34px 24px 0 0;border-right:1px solid var(--line-d);position:relative;}
+  .tl-step:last-child{border-right:none;}
+  .tl-step:not(:first-child){padding-left:24px;}
+  .tl-dot{width:11px;height:11px;border-radius:50%;background:var(--grad);position:absolute;top:-6px;left:0;}
+  .tl-step:not(:first-child) .tl-dot{left:24px;}
+  .tl-k{font-family:var(--font-display);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc-2);margin-bottom:10px;}
+  .tl-step h3{font-size:18px;margin-bottom:8px;}
+  .tl-step p{font-size:14px;color:var(--on-dark-mut);}
+  .tl-bars{display:flex;align-items:flex-end;gap:5px;height:34px;margin-top:16px;}
+  .tl-bars span{flex:1;background:linear-gradient(180deg,rgba(110,139,255,0.85),rgba(196,181,253,0.5));border-radius:3px 3px 0 0;}
+
+  /* Pricing */
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch;}
+  .price-card{border:1px solid var(--line-d);border-radius:22px;padding:40px 32px;display:flex;flex-direction:column;transition:transform .4s var(--ease),border-color .4s,box-shadow .4s;position:relative;}
+  .price-card:hover{transform:translateY(-8px);border-color:var(--line-d-2);}
+  .price-card.featured{background:var(--paper);color:var(--ink);border-color:var(--paper);}
+  .price-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:.04em;background:var(--grad);color:#0B0B0C;padding:6px 18px;border-radius:100px;}
+  .price-tier{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:4px;}
+  .price-desc{font-size:13px;opacity:.6;margin-bottom:14px;}
+  .price-amount{font-family:var(--font-display);font-size:42px;font-weight:700;line-height:1.1;}
+  .price-amount span{font-family:var(--font-body);font-size:16px;font-weight:500;opacity:.6;}
+  .price-feats{list-style:none;margin:24px 0 28px;display:flex;flex-direction:column;gap:12px;flex-grow:1;}
+  .price-feats li{display:flex;align-items:flex-start;gap:11px;font-size:14px;}
+  .price-card:not(.featured) .price-feats li{color:var(--on-dark-mut);}
+  .price-card.featured .price-feats li{color:var(--on-light-mut);}
+  .price-feats .ck{flex-shrink:0;margin-top:2px;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .price-note{text-align:center;margin-top:40px;font-size:14px;color:var(--on-dark-dim);max-width:640px;margin-left:auto;margin-right:auto;}
+
+  /* FAQ */
+  .faq-list{max-width:780px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line-l);}
+  .faq-q{width:100%;background:none;border:none;color:var(--on-light);cursor:pointer;text-align:left;padding:26px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;font-family:var(--font-display);font-size:18px;font-weight:500;transition:color .3s;}
+  .faq-q:hover{color:#000;}
+  .faq-icon{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1px solid var(--line-l-2);display:flex;align-items:center;justify-content:center;font-size:18px;transition:transform .35s var(--ease),background .3s,color .3s,border-color .3s;}
+  .faq-item.open .faq-icon{transform:rotate(45deg);background:var(--grad);border-color:transparent;color:#0B0B0C;}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+  .faq-a p{padding:0 0 26px;font-size:15px;color:var(--on-light-mut);max-width:92%;}
+
+  /* Final */
+  .final{position:relative;text-align:center;}
+  .final .wavefield path{stroke:var(--on-dark);}
+  .final h2{font-size:clamp(34px,5.4vw,60px);margin-bottom:18px;}
+  .final p{font-size:18px;color:var(--on-dark-mut);margin-bottom:36px;}
+  .final-mail{margin-top:24px;font-size:15px;color:var(--on-dark-mut);}
+  .final-mail a .acc{font-weight:600;}
+
+  /* Footer */
+  footer{background:var(--ink);border-top:1px solid var(--line-d);padding:60px 0 40px;}
+  .footer-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+  .footer-brand{max-width:300px;} .footer-brand .logo{margin-bottom:14px;} .footer-brand p{font-size:14px;color:var(--on-dark-dim);}
+  .footer-links{display:flex;gap:48px;flex-wrap:wrap;}
+  .footer-col h4{font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--on-dark-dim);margin-bottom:16px;}
+  .footer-col a{display:block;font-size:14px;color:var(--on-dark-mut);margin-bottom:11px;transition:color .25s;} .footer-col a:hover{color:var(--on-dark);}
+  .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:50px;padding-top:30px;border-top:1px solid var(--line-d);flex-wrap:wrap;}
+  .footer-bottom p{font-size:13px;color:var(--on-dark-dim);}
+  .social a{width:38px;height:38px;border-radius:50%;border:1px solid var(--line-d-2);display:flex;align-items:center;justify-content:center;color:var(--on-dark-mut);transition:all .3s;}
+  .social a:hover{background:var(--paper);color:var(--ink);border-color:transparent;transform:translateY(-3px);}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (max-width:920px){
+    .hero-inner,.results-inner,.loop-wrap{grid-template-columns:1fr;}
+    .stats,.creators-grid,.price-grid{grid-template-columns:1fr;}
+    .match-grid{grid-template-columns:1fr;}
+    .match-arrow{transform:rotate(90deg);margin:0 auto;}
+    .timeline{grid-template-columns:1fr;}
+    .tl-step{border-right:none;border-bottom:1px solid var(--line-d);padding:28px 0;}
+    .tl-step:last-child{border-bottom:none;} .tl-step:not(:first-child){padding-left:0;} .tl-step:not(:first-child) .tl-dot{left:0;}
+    .nav-links{display:none;} .nav-toggle{display:block;}
+    nav.menu-open .nav-links{display:flex;flex-direction:column;position:absolute;top:68px;left:16px;right:16px;background:var(--ink-2);border:1px solid var(--line-d-2);border-radius:18px;padding:22px;gap:18px;}
+    .footer-bottom{flex-direction:column;align-items:flex-start;}
   }
-  a { color: inherit; text-decoration: none; }
-  img, svg { display: block; }
-  ::selection { background: rgba(110,139,255,0.25); }
-  ::-webkit-scrollbar { width: 9px; }
-  ::-webkit-scrollbar-track { background: var(--ink); }
-  ::-webkit-scrollbar-thumb { background: var(--ink-3); border-radius: 10px; }
-
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
-
-  /* ── Sections noir / blanc ── */
-  .sec { position: relative; padding: 120px 0; overflow: hidden; }
-  .sec.dark  { background: var(--ink);   color: var(--on-dark); }
-  .sec.light { background: var(--paper); color: var(--on-light); }
-
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: 10px;
-    font-family: var(--font-display);
-    font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
-    margin-bottom: 22px; opacity: 0.85;
+  @media (max-width:560px){
+    .sec{padding:80px 0;} .hero{padding:130px 0 70px;}
+    .hero-ctas{flex-direction:column;} .hero-ctas .btn{width:100%;}
+    .creators-grid{grid-template-columns:1fr 1fr;} .creator{padding:20px 14px;}
   }
-  .eyebrow::before {
-    content: ''; width: 22px; height: 2px; border-radius: 2px;
-    background: var(--grad);
-  }
-
-  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.05; letter-spacing: -0.025em; }
-  .acc {
-    background: var(--grad);
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent; color: transparent;
-  }
-
-  .sec-head { max-width: 720px; margin: 0 auto 64px; text-align: center; }
-  .sec-head h2 { font-size: clamp(32px, 4.6vw, 52px); margin-bottom: 18px; }
-  .sec-head p { font-size: 17px; }
-  .sec.dark  .sec-head p { color: var(--on-dark-mut); }
-  .sec.light .sec-head p { color: var(--on-light-mut); }
-
-  /* ── Buttons ── */
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 9px;
-    font-family: var(--font-body); font-size: 14px; font-weight: 600;
-    padding: 15px 30px; border-radius: 100px; border: 1px solid transparent; cursor: pointer;
-    transition: transform var(--ease) .4s, box-shadow var(--ease) .4s, background .3s, color .3s, border-color .3s;
-    white-space: nowrap;
-  }
-  .arrow { transition: transform .3s var(--ease); }
-  .btn:hover .arrow { transform: translateX(4px); }
-
-  .dark  .btn-solid { background: var(--paper); color: var(--ink); }
-  .light .btn-solid { background: var(--ink);   color: var(--paper); }
-  .btn-solid:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(0,0,0,0.28); }
-
-  .dark  .btn-line { border-color: var(--line-d-2); color: var(--on-dark); }
-  .dark  .btn-line:hover { background: rgba(250,250,248,0.06); border-color: var(--on-dark); transform: translateY(-3px); }
-  .light .btn-line { border-color: var(--line-l-2); color: var(--on-light); }
-  .light .btn-line:hover { background: rgba(11,11,12,0.04); border-color: var(--on-light); transform: translateY(-3px); }
-  .btn-full { width: 100%; }
-
-  .btn-grad { background: var(--grad); color: #0B0B0C; box-shadow: 0 8px 30px rgba(110,139,255,0.25); }
-  .btn-grad:hover { transform: translateY(-3px); box-shadow: 0 14px 44px rgba(110,139,255,0.4); }
-
-  /* ── Navbar ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    transition: background .4s, backdrop-filter .4s, border-color .4s;
-    border-bottom: 1px solid transparent;
-  }
-  nav.scrolled {
-    background: rgba(11,11,12,0.72);
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--line-d);
-  }
-  .nav-inner { max-width: var(--max); margin: 0 auto; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; }
-  .logo { font-family: var(--font-display); font-size: 21px; font-weight: 700; letter-spacing: -0.02em; color: var(--on-dark); display: flex; align-items: center; gap: 8px; }
-  .logo .wave { width: 30px; height: 14px; display: inline-block; }
-  .nav-links { display: flex; align-items: center; gap: 32px; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: var(--on-dark-mut); transition: color .25s; }
-  .nav-links a:hover { color: var(--on-dark); }
-  .nav-cta { font-size: 13px; font-weight: 600; padding: 10px 20px; border-radius: 100px; border: 1px solid var(--line-d-2); color: var(--on-dark); transition: all .3s; }
-  .nav-cta:hover { background: var(--paper); color: var(--ink); border-color: transparent; }
-  .nav-toggle { display: none; background: none; border: none; color: var(--on-dark); cursor: pointer; }
-
-  /* ── Wave field (signature) ── */
-  .wavefield { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-  .wavefield path { fill: none; }
-  .wv-row { will-change: transform; }
-  @keyframes flow { from { transform: translateX(0); } to { transform: translateX(-480px); } }
-
-  /* ── Hero ── */
-  .hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding: 150px 0 90px; background: var(--ink); }
-  .hero .wavefield path { stroke: var(--on-dark); }
-  .hero-glow { position: absolute; width: 680px; height: 680px; border-radius: 50%; top: -200px; right: -160px; background: radial-gradient(circle, rgba(110,139,255,0.16), transparent 65%); filter: blur(40px); z-index: 0; }
-  .hero-inner { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; width: 100%; }
-  .hero-pill { display: inline-flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 500; color: var(--on-dark-mut); border: 1px solid var(--line-d); border-radius: 100px; padding: 8px 16px; margin-bottom: 28px; background: rgba(250,250,248,0.02); }
-  .hero-pill .dot { width: 7px; height: 7px; border-radius: 50%; background: #6EE7A8; box-shadow: 0 0 0 0 rgba(110,231,168,0.5); animation: pulse 2.2s infinite; }
-  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(110,231,168,0.5);} 70%{box-shadow:0 0 0 8px rgba(110,231,168,0);} 100%{box-shadow:0 0 0 0 rgba(110,231,168,0);} }
-  .hero h1 { font-size: clamp(42px, 6.2vw, 74px); margin-bottom: 24px; }
-  .hero-sub { font-size: 18px; color: var(--on-dark-mut); max-width: 520px; margin-bottom: 36px; line-height: 1.65; }
-  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-  .hero-meta { display: flex; gap: 36px; margin-top: 48px; flex-wrap: wrap; }
-  .hero-meta .num { font-family: var(--font-display); font-size: 28px; font-weight: 700; }
-  .hero-meta .lbl { font-size: 13px; color: var(--on-dark-dim); }
-
-  /* Hero data panel */
-  .panel { position: relative; background: var(--ink-2); border: 1px solid var(--line-d); border-radius: 18px; padding: 26px; box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
-  .panel-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
-  .panel-title { font-family: var(--font-display); font-size: 14px; font-weight: 600; }
-  .panel-tag { font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: .04em; padding: 4px 11px; border-radius: 100px; background: var(--grad); color: #0B0B0C; }
-  .spark { width: 100%; height: 120px; margin-bottom: 18px; }
-  .spark path.line { fill: none; stroke: url(#ondeGrad); stroke-width: 2.5; stroke-linecap: round; }
-  .spark path.area { fill: url(#areaGrad); stroke: none; opacity: 0; transition: opacity 1.2s ease; }
-  .spark .dot { fill: var(--paper); }
-  .panel-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
-  .panel-stat { border: 1px solid var(--line-d); border-radius: 12px; padding: 12px; }
-  .panel-stat .v { font-family: var(--font-display); font-size: 19px; font-weight: 700; }
-  .panel-stat .l { font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--on-dark-dim); margin-top: 3px; }
-
-  /* ── Marquee ── */
-  .proof { padding: 50px 0; }
-  .proof .proof-label { text-align: center; font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-light-dim); margin-bottom: 28px; }
-  .marquee { display: flex; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
-  .marquee-track { display: flex; gap: 56px; padding-right: 56px; animation: scroll 26s linear infinite; flex-shrink: 0; }
-  @keyframes scroll { to { transform: translateX(-100%); } }
-  .proof:hover .marquee-track { animation-play-state: paused; }
-  .proof-item { font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--on-light-dim); display: flex; align-items: center; gap: 12px; white-space: nowrap; transition: color .3s; }
-  .proof-item:hover { color: var(--on-light); }
-
-  /* ── How it works ── */
-  .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border-top: 1px solid var(--line-l); }
-  .step { padding: 40px 32px 40px 0; border-right: 1px solid var(--line-l); position: relative; }
-  .step:last-child { border-right: none; padding-right: 0; }
-  .step:not(:first-child) { padding-left: 32px; }
-  .step-num { font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: .1em; color: var(--on-light-dim); margin-bottom: 26px; }
-  .step h3 { font-size: 21px; margin-bottom: 12px; }
-  .step p { font-size: 15px; color: var(--on-light-mut); }
-  .step-wave { width: 56px; height: 16px; margin-bottom: 18px; }
-  .step-wave path { fill: none; stroke: var(--on-light); stroke-width: 2; stroke-linecap: round; opacity: .35; }
-  .algo-note { margin-top: 48px; text-align: center; }
-  .algo-note span { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; color: var(--on-light); border: 1px solid var(--line-l-2); border-radius: 100px; padding: 12px 24px; }
-
-  /* ── Stats (why ugc) ── */
-  .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-bottom: 44px; }
-  .stat-card { border: 1px solid var(--line-d); border-radius: 18px; padding: 40px 32px; text-align: center; position: relative; overflow: hidden; transition: border-color .4s, transform .4s var(--ease); }
-  .stat-card:hover { transform: translateY(-6px); border-color: var(--line-d-2); }
-  .stat-big { font-family: var(--font-display); font-size: 60px; font-weight: 700; line-height: 1; margin-bottom: 14px; }
-  .stat-card p { font-size: 15px; color: var(--on-dark-mut); }
-  .stat-wave { position: absolute; left: 0; right: 0; bottom: 0; height: 30px; opacity: .5; }
-  .stat-wave path { fill: none; stroke: url(#ondeGrad); stroke-width: 1.5; }
-  .why-para { max-width: 720px; margin: 0 auto; text-align: center; font-size: 17px; color: var(--on-dark-mut); }
-
-  /* ── Creators ── */
-  .creators-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
-  .creator { border: 1px solid var(--line-l); border-radius: 18px; padding: 30px; text-align: center; transition: transform .4s var(--ease), border-color .4s, background .4s; }
-  .creator:hover { transform: translateY(-6px); border-color: var(--on-light); }
-  .c-avatar { width: 84px; height: 84px; border-radius: 50%; margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--paper); background: linear-gradient(140deg, #2a2a2e, #0b0b0c); position: relative; }
-  .c-avatar::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--line-l-2); }
-  .creator h3 { font-size: 20px; margin-bottom: 10px; }
-  .c-niches { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin-bottom: 14px; }
-  .c-tag { font-size: 11px; font-weight: 600; color: var(--on-light-mut); border: 1px solid var(--line-l); padding: 4px 11px; border-radius: 100px; }
-  .c-bio { font-size: 14px; color: var(--on-light-mut); margin-bottom: 14px; }
-  .c-verified { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; opacity: 0; max-height: 0; transition: opacity .4s, max-height .4s; }
-  .c-verified .acc { font-weight: 700; }
-  .creator:hover .c-verified { opacity: 1; max-height: 30px; }
-
-  /* ── Pricing ── */
-  .price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; align-items: stretch; }
-  .price-card { border: 1px solid var(--line-d); border-radius: 22px; padding: 40px 32px; display: flex; flex-direction: column; transition: transform .4s var(--ease), border-color .4s, box-shadow .4s; position: relative; }
-  .price-card:hover { transform: translateY(-8px); border-color: var(--line-d-2); }
-  .price-card.featured { background: var(--paper); color: var(--ink); border-color: var(--paper); }
-  .price-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: .04em; background: var(--grad); color: #0B0B0C; padding: 6px 18px; border-radius: 100px; }
-  .price-tier { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin-bottom: 6px; }
-  .price-amount { font-family: var(--font-display); font-size: 44px; font-weight: 700; line-height: 1.1; }
-  .price-amount span { font-family: var(--font-body); font-size: 16px; font-weight: 500; opacity: .6; }
-  .price-feats { list-style: none; margin: 26px 0 30px; display: flex; flex-direction: column; gap: 13px; flex-grow: 1; }
-  .price-feats li { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; }
-  .price-card:not(.featured) .price-feats li { color: var(--on-dark-mut); }
-  .price-card.featured .price-feats li { color: var(--on-light-mut); }
-  .price-feats .ck { flex-shrink: 0; margin-top: 2px; font-weight: 700; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  .price-note { text-align: center; margin-top: 44px; font-size: 14px; color: var(--on-dark-dim); max-width: 640px; margin-left: auto; margin-right: auto; }
-
-  /* ── Results / Algo ── */
-  .results-inner { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 56px; align-items: center; }
-  .results-copy h2 { font-size: clamp(28px, 4vw, 44px); margin-bottom: 20px; }
-  .results-copy p { font-size: 16px; color: var(--on-light-mut); margin-bottom: 18px; }
-  .results-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
-  .results-list li { display: flex; align-items: center; gap: 12px; font-size: 15px; }
-  .results-list .ic { width: 30px; height: 30px; border-radius: 9px; border: 1px solid var(--line-l-2); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
-  .results-kicker { margin-top: 24px; font-weight: 500; }
-
-  .chart-card { border: 1px solid var(--line-l); border-radius: 20px; padding: 26px; background: var(--paper); box-shadow: 0 24px 60px rgba(11,11,12,0.08); }
-  .chart-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
-  .chart-title { font-family: var(--font-display); font-weight: 600; font-size: 15px; }
-  .chart-tag { font-family: var(--font-display); font-size: 11px; font-weight: 600; color: #1c8f55; background: rgba(28,143,85,0.1); padding: 4px 10px; border-radius: 100px; }
-  .chart-sub { font-size: 12px; color: var(--on-light-dim); margin-bottom: 18px; }
-  .chart-svg { width: 100%; height: 200px; }
-  .chart-svg .grid line { stroke: var(--line-l); stroke-width: 1; }
-  .chart-svg .axis { fill: var(--on-light-dim); font-family: 'Space Grotesk'; font-size: 11px; }
-  .chart-svg path.cline { fill: none; stroke: url(#ondeGrad); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-  .chart-svg path.carea { fill: url(#areaGradL); stroke: none; opacity: 0; transition: opacity 1.4s ease .3s; }
-  .chart-svg .cdot { fill: var(--ink); }
-  .chart-svg .cdot-end { fill: var(--acc-1); }
-  .chart-metrics { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-top: 18px; }
-  .cm { border: 1px solid var(--line-l); border-radius: 12px; padding: 12px; }
-  .cm .v { font-family: var(--font-display); font-size: 20px; font-weight: 700; }
-  .cm .d { font-size: 11px; color: #1c8f55; font-weight: 600; margin-top: 2px; }
-  .cm .l { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--on-light-dim); margin-top: 4px; }
-
-  /* ── FAQ ── */
-  .faq-list { max-width: 780px; margin: 0 auto; }
-  .faq-item { border-bottom: 1px solid var(--line-d); }
-  .faq-q { width: 100%; background: none; border: none; color: var(--on-dark); cursor: pointer; text-align: left; padding: 26px 0; display: flex; align-items: center; justify-content: space-between; gap: 20px; font-family: var(--font-display); font-size: 18px; font-weight: 500; transition: color .3s; }
-  .faq-q:hover { color: #fff; }
-  .faq-icon { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--line-d-2); display: flex; align-items: center; justify-content: center; font-size: 18px; transition: transform .35s var(--ease), background .3s, color .3s, border-color .3s; }
-  .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--grad); border-color: transparent; color: #0B0B0C; }
-  .faq-a { max-height: 0; overflow: hidden; transition: max-height .4s var(--ease); }
-  .faq-a p { padding: 0 0 26px; font-size: 15px; color: var(--on-dark-mut); max-width: 92%; }
-
-  /* ── Final CTA ── */
-  .final { position: relative; text-align: center; }
-  .final .wavefield path { stroke: var(--on-dark); }
-  .final h2 { font-size: clamp(34px, 5.4vw, 60px); margin-bottom: 18px; }
-  .final p { font-size: 18px; color: var(--on-dark-mut); margin-bottom: 36px; }
-  .final-mail { margin-top: 24px; font-size: 15px; color: var(--on-dark-mut); }
-  .final-mail a .acc { font-weight: 600; }
-
-  /* ── Footer ── */
-  footer { background: var(--ink); border-top: 1px solid var(--line-d); padding: 60px 0 40px; }
-  .footer-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
-  .footer-brand { max-width: 300px; }
-  .footer-brand .logo { margin-bottom: 14px; }
-  .footer-brand p { font-size: 14px; color: var(--on-dark-dim); }
-  .footer-links { display: flex; gap: 48px; flex-wrap: wrap; }
-  .footer-col h4 { font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-dark-dim); margin-bottom: 16px; }
-  .footer-col a { display: block; font-size: 14px; color: var(--on-dark-mut); margin-bottom: 11px; transition: color .25s; }
-  .footer-col a:hover { color: var(--on-dark); }
-  .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--line-d); flex-wrap: wrap; }
-  .footer-bottom p { font-size: 13px; color: var(--on-dark-dim); }
-  .social a { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line-d-2); display: flex; align-items: center; justify-content: center; color: var(--on-dark-mut); transition: all .3s; }
-  .social a:hover { background: var(--paper); color: var(--ink); border-color: transparent; transform: translateY(-3px); }
-
-  /* ── Reveal ── */
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
-  .reveal.in { opacity: 1; transform: translateY(0); }
-
-  /* ── Responsive ── */
-  @media (max-width: 920px) {
-    .hero-inner, .results-inner { grid-template-columns: 1fr; }
-    .steps, .stats, .creators-grid, .price-grid { grid-template-columns: 1fr; }
-    .step { border-right: none; border-bottom: 1px solid var(--line-l); padding: 32px 0; }
-    .step:last-child { border-bottom: none; }
-    .step:not(:first-child) { padding-left: 0; }
-    .nav-links { display: none; }
-    .nav-toggle { display: block; }
-    nav.menu-open .nav-links { display: flex; flex-direction: column; position: absolute; top: 68px; left: 16px; right: 16px; background: var(--ink-2); border: 1px solid var(--line-d-2); border-radius: 18px; padding: 22px; gap: 18px; }
-    .footer-bottom { flex-direction: column; align-items: flex-start; }
-    .chart-metrics { grid-template-columns: repeat(2,1fr); }
-  }
-  @media (max-width: 560px) {
-    .sec { padding: 80px 0; }
-    .hero { padding: 130px 0 70px; }
-    .hero-ctas { flex-direction: column; }
-    .hero-ctas .btn { width: 100%; }
-    .creators-grid { grid-template-columns: 1fr 1fr; }
-    .creator { padding: 22px 14px; }
-  }
-  @media (max-width: 400px) { .creators-grid { grid-template-columns: 1fr; } }
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
-    .reveal { opacity: 1; transform: none; }
-    .spark path.area, .chart-svg path.carea { opacity: 1; }
+  @media (max-width:400px){.creators-grid{grid-template-columns:1fr;}}
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none !important;transition-duration:.01ms !important;}
+    .reveal{opacity:1;transform:none;} .spark path.area,.chart-svg path.carea{opacity:1;} .meter-fill{transition:none;}
   }
 </style>
 </head>
 <body>
 
-<!-- Dégradés SVG partagés -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <linearGradient id="ondeGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#6E8BFF"/><stop offset="100%" stop-color="#C4B5FD"/></linearGradient>
   <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(110,139,255,0.28)"/><stop offset="100%" stop-color="rgba(110,139,255,0)"/></linearGradient>
   <linearGradient id="areaGradL" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(110,139,255,0.18)"/><stop offset="100%" stop-color="rgba(110,139,255,0)"/></linearGradient>
 </defs></svg>
 
-<!-- ── NAV ── -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="#hero" class="logo">Onde <svg class="wave" viewBox="0 0 30 14" fill="none" aria-hidden="true"><path d="M2 7 Q6 1 10 7 T18 7 T26 7" stroke="url(#ondeGrad)" stroke-width="2.4" stroke-linecap="round"/></svg></a>
     <div class="nav-links" id="navLinks">
-      <a href="#how">Méthode</a>
-      <a href="#creators">Créatrices</a>
+      <a href="#methode">Méthode</a>
+      <a href="#matching">Créatrices</a>
+      <a href="#results">Résultats</a>
       <a href="#pricing">Offres</a>
       <a href="#faq">FAQ</a>
-      <a href="mailto:hello@ondestudio.be" class="nav-cta">Parler à Apollo</a>
+      <a href="mailto:hello@ondestudio.be" class="nav-cta">Parler à un fondateur</a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">
-      <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
-    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
   </div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-glow"></div>
   <svg class="wavefield" id="heroWaves" preserveAspectRatio="none" aria-hidden="true"></svg>
   <div class="wrap hero-inner">
     <div class="hero-copy">
-      <div class="hero-pill"><span class="dot"></span> Studio UGC · Belgique &amp; France</div>
+      <div class="hero-pill"><span class="dot"></span> Studio UGC de performance · Belgique &amp; France</div>
       <h1>Vos clients vous font confiance.<br><span class="acc">Montrez-le.</span></h1>
-      <p class="hero-sub">Onde Studio produit des vidéos UGC authentiques avec de vraies créatrices belges et françaises — pour alimenter vos ads, vos Reels et vos fiches produit.</p>
+      <p class="hero-sub">De vraies créatrices, spécialisées par secteur. Des créas testées et optimisées sur la data. Un partenaire qui lit les chiffres avec vous, mois après mois — pour les marques DTC qui scalent en pub.</p>
       <div class="hero-ctas">
-        <a href="#pricing" class="btn btn-solid">Voir nos offres <span class="arrow">→</span></a>
-        <a href="mailto:hello@ondestudio.be?subject=Discutons%20de%20mon%20projet" class="btn btn-line">Parler à Apollo</a>
+        <a href="#methode" class="btn btn-solid">Découvrir la méthode <span class="arrow">→</span></a>
+        <a href="mailto:hello@ondestudio.be?subject=Discutons%20de%20mon%20projet" class="btn btn-line">Parler à un fondateur</a>
       </div>
       <div class="hero-meta">
         <div><div class="num acc" data-count="5" data-suffix=" j">5 j</div><div class="lbl">Première vidéo livrée</div></div>
-        <div><div class="num acc" data-count="100" data-suffix="%">100%</div><div class="lbl">Droits paid inclus</div></div>
-        <div><div class="num acc">🇧🇪🇫🇷</div><div class="lbl">Créatrices locales</div></div>
+        <div><div class="num acc">Par secteur</div><div class="lbl">Créatrices spécialisées</div></div>
+        <div><div class="num acc">Chaque mois</div><div class="lbl">Optimisé sur la data</div></div>
       </div>
     </div>
-
     <div class="panel reveal">
-      <div class="panel-top">
-        <span class="panel-title">Performance · derniers Reels</span>
-        <span class="panel-tag">▲ +312%</span>
-      </div>
+      <div class="panel-top"><span class="panel-title">Performance · derniers Reels</span><span class="panel-tag">▲ +312%</span></div>
       <svg class="spark" id="heroSpark" viewBox="0 0 360 120" preserveAspectRatio="none" aria-hidden="true">
-        <path class="area" d=""></path>
-        <path class="line" d=""></path>
-        <circle class="dot" r="4" cx="0" cy="0"></circle>
+        <path class="area" d=""></path><path class="line" d=""></path><circle class="dot" r="4" cx="0" cy="0"></circle>
       </svg>
       <div class="panel-stats">
         <div class="panel-stat"><div class="v" data-count="11" data-suffix=",4s">11,4s</div><div class="l">Watch time</div></div>
@@ -392,444 +334,320 @@
   </div>
 </section>
 
-<!-- ── SOCIAL PROOF ── -->
-<section class="proof sec light" style="padding:56px 0">
-  <div class="proof-label">Nos vidéos alimentent les campagnes de marques dans</div>
-  <div class="marquee">
-    <div class="marquee-track" id="track">
-      <div class="proof-item">~ Beauté</div>
-      <div class="proof-item">~ Mode</div>
-      <div class="proof-item">~ Food</div>
-      <div class="proof-item">~ Sport</div>
-      <div class="proof-item">~ Tech</div>
-      <div class="proof-item">~ Lifestyle</div>
-    </div>
-  </div>
+<!-- PROOF -->
+<section class="proof sec light" style="padding:54px 0">
+  <div class="proof-label">Du contenu qui ressemble à vos clients — dans tous les secteurs</div>
+  <div class="marquee"><div class="marquee-track" id="track">
+    <div class="proof-item">~ Beauté</div><div class="proof-item">~ Skincare</div><div class="proof-item">~ Mode</div>
+    <div class="proof-item">~ Food</div><div class="proof-item">~ Wellness</div><div class="proof-item">~ Sport</div>
+    <div class="proof-item">~ Tech</div><div class="proof-item">~ Lifestyle</div>
+  </div></div>
 </section>
 
-<!-- ── HOW IT WORKS ── -->
-<section class="sec light" id="how">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">La méthode Onde</div>
-      <h2>Simple. Rapide. Pensé pour <span class="acc">convertir.</span></h2>
-      <p>Trois étapes entre votre brief et des vidéos prêtes à publier.</p>
-    </div>
-    <div class="steps">
-      <div class="step reveal">
-        <svg class="step-wave" viewBox="0 0 56 16" fill="none"><path d="M2 8 Q9 1 16 8 T30 8 T44 8 T54 8" stroke-linecap="round"/></svg>
-        <div class="step-num">01 / BRIEF</div>
-        <h3>Vous partagez</h3>
-        <p>Vous nous envoyez votre produit et vos objectifs. On définit ensemble l'angle, le ton et les plateformes ciblées.</p>
-      </div>
-      <div class="step reveal" style="transition-delay:.1s">
-        <svg class="step-wave" viewBox="0 0 56 16" fill="none"><path d="M2 8 Q9 1 16 8 T30 8 T44 8 T54 8" stroke-linecap="round"/></svg>
-        <div class="step-num">02 / PRODUCTION</div>
-        <h3>On produit</h3>
-        <p>Nos créatrices filment, on monte et on optimise pour le hook, le rythme et la rétention. Vous validez avant publication.</p>
-      </div>
-      <div class="step reveal" style="transition-delay:.2s">
-        <svg class="step-wave" viewBox="0 0 56 16" fill="none"><path d="M2 8 Q9 1 16 8 T30 8 T44 8 T54 8" stroke-linecap="round"/></svg>
-        <div class="step-num">03 / LIVRAISON</div>
-        <h3>Vous publiez</h3>
-        <p>Vous recevez des vidéos prêtes à publier en 5 jours — formatées pour Reels, TikTok, Meta Ads et fiches produit.</p>
-      </div>
-    </div>
-    <div class="algo-note reveal"><span>📊 Analyse algo incluse dans tous nos contrats mensuels</span></div>
-  </div>
-</section>
-
-<!-- ── WHY UGC ── -->
+<!-- WHY / STATS -->
 <section class="sec dark">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="eyebrow">Pourquoi l'UGC</div>
-      <h2>Le UGC convertit <span class="acc">mieux que tout</span></h2>
+      <h2>Vos pubs fatiguent vite. <span class="acc">Le vrai contenu, non.</span></h2>
+      <p>Les créatives léchées s'usent en quelques jours. Le contenu authentique, lui, ressemble à ce que vos clients voient déjà dans leur feed — et c'est ça qui convertit.</p>
     </div>
     <div class="stats">
-      <div class="stat-card reveal">
-        <div class="stat-big"><span data-count="3">3</span>×</div>
-        <p>Meilleur taux de clic qu'une publicité classique en studio.</p>
-        <svg class="stat-wave" viewBox="0 0 300 30" preserveAspectRatio="none"><path d="M0 20 Q37 6 75 20 T150 20 T225 20 T300 20"/></svg>
-      </div>
-      <div class="stat-card reveal" style="transition-delay:.1s">
-        <div class="stat-big"><span data-count="60">60</span>%</div>
-        <p>Des acheteurs font davantage confiance aux avis vidéo qu'au texte.</p>
-        <svg class="stat-wave" viewBox="0 0 300 30" preserveAspectRatio="none"><path d="M0 20 Q37 6 75 20 T150 20 T225 20 T300 20"/></svg>
-      </div>
-      <div class="stat-card reveal" style="transition-delay:.2s">
-        <div class="stat-big"><span data-count="4">4</span> canaux</div>
-        <p>Utilisable sur TikTok, Reels, Meta Ads et vos fiches produit.</p>
-        <svg class="stat-wave" viewBox="0 0 300 30" preserveAspectRatio="none"><path d="M0 20 Q37 6 75 20 T150 20 T225 20 T300 20"/></svg>
-      </div>
+      <div class="stat-card reveal"><div class="stat-big"><span data-count="3">3</span>×</div><p>Meilleur taux de clic qu'une publicité classique en studio.</p><svg class="stat-wave" viewBox="0 0 300 28" preserveAspectRatio="none"><path d="M0 18 Q37 5 75 18 T150 18 T225 18 T300 18"/></svg></div>
+      <div class="stat-card reveal" style="transition-delay:.1s"><div class="stat-big"><span data-count="60">60</span>%</div><p>Des acheteurs font davantage confiance aux avis vidéo qu'au texte.</p><svg class="stat-wave" viewBox="0 0 300 28" preserveAspectRatio="none"><path d="M0 18 Q37 5 75 18 T150 18 T225 18 T300 18"/></svg></div>
+      <div class="stat-card reveal" style="transition-delay:.2s"><div class="stat-big"><span data-count="4">4</span> canaux</div><p>Une création, déployée sur TikTok, Reels, Meta Ads et vos fiches produit.</p><svg class="stat-wave" viewBox="0 0 300 28" preserveAspectRatio="none"><path d="M0 18 Q37 5 75 18 T150 18 T225 18 T300 18"/></svg></div>
     </div>
-    <p class="why-para reveal">Le contenu authentique surpasse la production studio parce qu'il ressemble à ce que vos clients voient déjà chaque jour dans leur feed. Pas une pub — une recommandation. C'est cette proximité qui déclenche la confiance, et la confiance qui déclenche l'achat.</p>
+    <p class="why-para reveal">Mais l'authenticité ne suffit plus. Ce qui sépare une vidéo qui dort d'une vidéo qui vend, c'est la <strong>méthode</strong> derrière. La nôtre tourne en boucle.</p>
   </div>
 </section>
 
-<!-- ── CREATORS ── -->
-<section class="sec light" id="creators">
+<!-- LA BOUCLE ONDE -->
+<section class="sec light" id="methode">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">La méthode</div>
+      <h2>La Boucle <span class="acc">Onde</span></h2>
+      <p>Pas des vidéos au hasard — un système qui s'améliore tout seul. Chaque mois est briefé sur les données du précédent.</p>
+    </div>
+    <div class="loop-wrap">
+      <div class="loop-vis reveal">
+        <svg class="loop-ring" viewBox="0 0 200 200"><circle cx="100" cy="100" r="86"></circle><circle class="spin" cx="100" cy="100" r="86"></circle></svg>
+        <div class="loop-center"><span class="lc-k">Le cycle</span><span class="lc-t acc">Onde</span></div>
+        <div class="loop-node on" style="left:50%;top:7%">1</div>
+        <div class="loop-node" style="left:90%;top:38%">2</div>
+        <div class="loop-node" style="left:78%;top:85%">3</div>
+        <div class="loop-node" style="left:22%;top:85%">4</div>
+        <div class="loop-node" style="left:10%;top:38%">5</div>
+      </div>
+      <ul class="loop-steps">
+        <li class="loop-step reveal"><span class="ls-n">01</span><div><h3>Analyse</h3><p>On audite votre marque, vos pubs actuelles et ce que l'algorithme valorise dans votre secteur.</p></div></li>
+        <li class="loop-step reveal" style="transition-delay:.05s"><span class="ls-n">02</span><div><h3>Stratégie</h3><p>Angles, hooks et formats définis selon vos objectifs — pas selon notre humeur.</p></div></li>
+        <li class="loop-step reveal" style="transition-delay:.1s"><span class="ls-n">03</span><div><h3>Création</h3><p>Une créatrice spécialisée dans votre secteur filme, on monte et on optimise pour la rétention.</p></div></li>
+        <li class="loop-step reveal" style="transition-delay:.15s"><span class="ls-n">04</span><div><h3>Test</h3><p>On déploie en variations, on mesure hook rate, watch time, saves et partages.</p></div></li>
+        <li class="loop-step reveal" style="transition-delay:.2s"><span class="ls-n">05</span><div><h3>Rebrief</h3><p>Les chiffres nourrissent le mois suivant. La boucle se resserre, la performance monte.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MATCHING -->
+<section class="sec light" id="matching" style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Assignement personnalisé</div>
+      <h2>La bonne créatrice. <span class="acc">Pour votre marque.</span></h2>
+      <p>On ne vous envoie pas un créateur au hasard. On assigne une créatrice formée et spécialisée dans <em>votre</em> secteur, alignée avec votre ton de marque.</p>
+    </div>
+    <div class="match-grid">
+      <div class="match-card reveal"><div class="mc-k">Votre marque</div><div class="mc-t">Secteur + ton</div><p>Vous nous partagez votre univers, votre produit et vos objectifs.</p></div>
+      <svg class="match-arrow reveal" viewBox="0 0 40 20"><path d="M2 10 Q12 2 20 10 T38 10"/></svg>
+      <div class="match-card mid reveal" style="transition-delay:.05s"><div class="mc-k">Matching Onde</div><div class="mc-t">L'algo + l'humain</div><p>On sélectionne dans notre réseau la créatrice spécialisée la plus alignée.</p></div>
+      <svg class="match-arrow reveal" style="transition-delay:.1s" viewBox="0 0 40 20"><path d="M2 10 Q12 2 20 10 T38 10"/></svg>
+      <div class="match-card reveal" style="transition-delay:.15s"><div class="mc-k">Le résultat</div><div class="mc-t">Créatrice spécialisée</div><p>Du contenu crédible, natif de votre niche, prêt à performer.</p></div>
+    </div>
+    <div class="match-list">
+      <div class="match-feat reveal"><span class="ck">✓</span> Créatrices formées et vérifiées par secteur (beauté, food, wellness, mode…)</div>
+      <div class="match-feat reveal"><span class="ck">✓</span> Brief sur-mesure aligné sur votre identité de marque</div>
+      <div class="match-feat reveal"><span class="ck">✓</span> Vous gardez le dernier mot sur le choix de la créatrice</div>
+    </div>
+  </div>
+</section>
+
+<!-- CREATORS -->
+<section class="sec dark" id="creators">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="eyebrow">Le réseau</div>
-      <h2>Nos créatrices. <span class="acc">Vraies. Locales. Efficaces.</span></h2>
-      <p>Notre réseau de créatrices partenaires, vérifiées et sélectionnées pour leur authenticité.</p>
+      <h2>Vraies. Locales. <span class="acc">Spécialisées.</span></h2>
+      <p>Un réseau de créatrices partenaires, chacune experte de son terrain.</p>
     </div>
     <div class="creators-grid">
-      <div class="creator reveal">
-        <div class="c-avatar">SO</div><h3>Sophie</h3>
-        <div class="c-niches"><span class="c-tag">Beauté</span><span class="c-tag">Lifestyle</span></div>
-        <p class="c-bio">Routines skincare et beauté qui semblent naturelles, jamais scriptées.</p>
-        <span class="c-verified"><span class="acc">✓</span> Créatrice vérifiée Onde Studio</span>
-      </div>
-      <div class="creator reveal" style="transition-delay:.05s">
-        <div class="c-avatar">LÉ</div><h3>Léa</h3>
-        <div class="c-niches"><span class="c-tag">Tech</span><span class="c-tag">Lifestyle</span></div>
-        <p class="c-bio">Démos produit claires et hooks qui retiennent dès la première seconde.</p>
-        <span class="c-verified"><span class="acc">✓</span> Créatrice vérifiée Onde Studio</span>
-      </div>
-      <div class="creator reveal" style="transition-delay:.1s">
-        <div class="c-avatar">EM</div><h3>Emma</h3>
-        <div class="c-niches"><span class="c-tag">Food</span><span class="c-tag">Healthy</span></div>
-        <p class="c-bio">Contenu food appétissant, lumineux et terriblement partageable.</p>
-        <span class="c-verified"><span class="acc">✓</span> Créatrice vérifiée Onde Studio</span>
-      </div>
-      <div class="creator reveal" style="transition-delay:.15s">
-        <div class="c-avatar">CH</div><h3>Chloé</h3>
-        <div class="c-niches"><span class="c-tag">Mode</span><span class="c-tag">Lifestyle</span></div>
-        <p class="c-bio">Sens du style éditorial, parfaite pour les marques mode et premium.</p>
-        <span class="c-verified"><span class="acc">✓</span> Créatrice vérifiée Onde Studio</span>
-      </div>
-      <div class="creator reveal" style="transition-delay:.2s">
-        <div class="c-avatar">IN</div><h3>Inès</h3>
-        <div class="c-niches"><span class="c-tag">Sport</span><span class="c-tag">Wellness</span></div>
-        <p class="c-bio">Énergie et authenticité — idéale pour le sport et le bien-être.</p>
-        <span class="c-verified"><span class="acc">✓</span> Créatrice vérifiée Onde Studio</span>
-      </div>
-      <div class="creator reveal" style="transition-delay:.25s">
-        <div class="c-avatar">MA</div><h3>Marie</h3>
-        <div class="c-niches"><span class="c-tag">Beauté</span><span class="c-tag">Mode</span></div>
-        <p class="c-bio">Rendu instagrammable et soigné, pensé pour les marques premium.</p>
-        <span class="c-verified"><span class="acc">✓</span> Créatrice vérifiée Onde Studio</span>
-      </div>
+      <div class="creator reveal"><div class="c-avatar">SO</div><h3>Sophie</h3><div class="c-spec">Spécialité · Beauté</div><div class="c-niches"><span class="c-tag">Skincare</span><span class="c-tag">Lifestyle</span></div><p class="c-bio">Routines beauté qui semblent naturelles, jamais scriptées.</p><span class="c-verified"><span class="acc">✓</span> Vérifiée Onde Studio</span></div>
+      <div class="creator reveal" style="transition-delay:.05s"><div class="c-avatar">LÉ</div><h3>Léa</h3><div class="c-spec">Spécialité · Tech</div><div class="c-niches"><span class="c-tag">Gadgets</span><span class="c-tag">Apps</span></div><p class="c-bio">Démos produit claires, hooks qui retiennent dès la 1ʳᵉ seconde.</p><span class="c-verified"><span class="acc">✓</span> Vérifiée Onde Studio</span></div>
+      <div class="creator reveal" style="transition-delay:.1s"><div class="c-avatar">EM</div><h3>Emma</h3><div class="c-spec">Spécialité · Food</div><div class="c-niches"><span class="c-tag">Healthy</span><span class="c-tag">Boisson</span></div><p class="c-bio">Contenu food appétissant, lumineux et terriblement partageable.</p><span class="c-verified"><span class="acc">✓</span> Vérifiée Onde Studio</span></div>
+      <div class="creator reveal" style="transition-delay:.15s"><div class="c-avatar">CH</div><h3>Chloé</h3><div class="c-spec">Spécialité · Mode</div><div class="c-niches"><span class="c-tag">Premium</span><span class="c-tag">Lifestyle</span></div><p class="c-bio">Sens du style éditorial, parfaite pour les marques premium.</p><span class="c-verified"><span class="acc">✓</span> Vérifiée Onde Studio</span></div>
+      <div class="creator reveal" style="transition-delay:.2s"><div class="c-avatar">IN</div><h3>Inès</h3><div class="c-spec">Spécialité · Wellness</div><div class="c-niches"><span class="c-tag">Sport</span><span class="c-tag">Compléments</span></div><p class="c-bio">Énergie et authenticité — idéale pour le bien-être.</p><span class="c-verified"><span class="acc">✓</span> Vérifiée Onde Studio</span></div>
+      <div class="creator reveal" style="transition-delay:.25s"><div class="c-avatar">MA</div><h3>Marie</h3><div class="c-spec">Spécialité · Beauté</div><div class="c-niches"><span class="c-tag">Maquillage</span><span class="c-tag">Mode</span></div><p class="c-bio">Rendu instagrammable et soigné, pensé pour le premium.</p><span class="c-verified"><span class="acc">✓</span> Vérifiée Onde Studio</span></div>
     </div>
   </div>
 </section>
 
-<!-- ── PRICING ── -->
-<section class="sec dark" id="pricing">
+<!-- RESULTS + DECODER -->
+<section class="sec light" id="results">
+  <div class="wrap results-inner">
+    <div class="results-copy reveal">
+      <div class="eyebrow">Data &amp; algorithme</div>
+      <h2>On ne livre pas des vidéos. <span class="acc">On lit les courbes.</span></h2>
+      <p>Chaque mois, un rapport clair : ce qui a marché, pourquoi, et ce qu'on change. On décode les signaux que l'algorithme récompense vraiment — et on optimise chacun.</p>
+      <div class="decoder">
+        <div class="decoder-h">Ce que l'algorithme récompense — et qu'on optimise</div>
+        <div class="meter reveal"><div class="meter-top"><span class="ml">Hook (0–3 s)</span><span class="mv">64%</span></div><div class="meter-bar"><div class="meter-fill" data-level="64"></div></div></div>
+        <div class="meter reveal"><div class="meter-top"><span class="ml">Temps de visionnage</span><span class="mv">11,4 s</span></div><div class="meter-bar"><div class="meter-fill" data-level="78"></div></div></div>
+        <div class="meter reveal"><div class="meter-top"><span class="ml">Taux de sauvegarde</span><span class="mv">8,2%</span></div><div class="meter-bar"><div class="meter-fill" data-level="52"></div></div></div>
+        <div class="meter reveal"><div class="meter-top"><span class="ml">Taux de partage</span><span class="mv">6,7%</span></div><div class="meter-bar"><div class="meter-fill" data-level="47"></div></div></div>
+      </div>
+    </div>
+    <div class="chart-card reveal" style="transition-delay:.1s">
+      <div class="chart-head"><span class="chart-title">Performance · 6 livraisons</span><span class="chart-tag">● En hausse</span></div>
+      <div class="chart-sub">Score d'engagement par vidéo (indice 0–100)</div>
+      <svg class="chart-svg" id="bigChart" viewBox="0 0 520 210" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <p class="results-kicker" style="margin-top:18px;font-size:14px;color:var(--on-light-mut)"><span class="acc">Chaque vidéo du mois suivant est briefée sur les données du mois précédent.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERSHIP -->
+<section class="sec dark" id="partnership">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Accompagnement long terme</div>
+      <h2>Un partenaire. <span class="acc">Pas un prestataire.</span></h2>
+      <p>L'UGC qui performe se construit dans la durée. Plus on travaille ensemble, plus la créatrice connaît votre marque — et plus les chiffres montent.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-step reveal"><span class="tl-dot"></span><div class="tl-k">Mois 1</div><h3>On apprend votre marque</h3><p>Onboarding, premiers angles, première créatrice assignée. On pose la base.</p><div class="tl-bars"><span style="height:30%"></span><span style="height:42%"></span><span style="height:38%"></span></div></div>
+      <div class="tl-step reveal" style="transition-delay:.08s"><span class="tl-dot"></span><div class="tl-k">Mois 2</div><h3>On lit les 1ᵉʳˢ chiffres</h3><p>Rapport de perf, hooks gagnants identifiés, on double sur ce qui marche.</p><div class="tl-bars"><span style="height:42%"></span><span style="height:55%"></span><span style="height:60%"></span></div></div>
+      <div class="tl-step reveal" style="transition-delay:.16s"><span class="tl-dot"></span><div class="tl-k">Mois 3</div><h3>On itère sur la data</h3><p>La créatrice maîtrise votre ton. Les créatives sont calibrées sur vos KPIs.</p><div class="tl-bars"><span style="height:55%"></span><span style="height:68%"></span><span style="height:76%"></span></div></div>
+      <div class="tl-step reveal" style="transition-delay:.24s"><span class="tl-dot"></span><div class="tl-k">Mois 4+</div><h3>On scale</h3><p>Flux régulier, plusieurs créatrices, stratégie contenu complète. On accélère.</p><div class="tl-bars"><span style="height:70%"></span><span style="height:84%"></span><span style="height:96%"></span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec dark" id="pricing" style="padding-top:0;">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="eyebrow">Offres</div>
-      <h2>Des offres claires. <span class="acc">Des résultats mesurables.</span></h2>
+      <h2>Commencez petit. <span class="acc">Scalez vite.</span></h2>
     </div>
     <div class="price-grid">
       <div class="price-card reveal">
-        <div class="price-tier">Starter</div>
-        <div class="price-amount">€350 <span>/ vidéo</span></div>
+        <div class="price-tier">Test Pack</div>
+        <div class="price-desc">Pour tester l'eau sans risque</div>
+        <div class="price-amount">€350 <span>/ pack</span></div>
         <ul class="price-feats">
-          <li><span class="ck">✓</span> 1 vidéo UGC</li>
+          <li><span class="ck">✓</span> 1 vidéo UGC (ou 3 hooks à tester)</li>
+          <li><span class="ck">✓</span> Créatrice spécialisée assignée</li>
           <li><span class="ck">✓</span> Droits paid ads inclus</li>
-          <li><span class="ck">✓</span> Livraison en 5 jours</li>
-          <li><span class="ck">✓</span> 1 révision incluse</li>
+          <li><span class="ck">✓</span> Livraison en 5 jours · 1 révision</li>
         </ul>
-        <a href="mailto:hello@ondestudio.be?subject=Offre%20Starter" class="btn btn-line btn-full">Commander</a>
+        <a href="mailto:hello@ondestudio.be?subject=Offre%20Test%20Pack" class="btn btn-line btn-full">Commander</a>
       </div>
       <div class="price-card featured reveal" style="transition-delay:.1s">
         <div class="price-badge">★ Recommandé</div>
         <div class="price-tier">Growth</div>
+        <div class="price-desc">Le moteur de créas mensuel</div>
         <div class="price-amount">€900 <span>/ mois</span></div>
         <ul class="price-feats">
-          <li><span class="ck">✓</span> 3 vidéos UGC</li>
+          <li><span class="ck">✓</span> 3 vidéos UGC / mois</li>
+          <li><span class="ck">✓</span> Créatrice attitrée + matching secteur</li>
+          <li><span class="ck">✓</span> La Boucle Onde : test &amp; itération</li>
+          <li><span class="ck">✓</span> Rapport de performance mensuel</li>
           <li><span class="ck">✓</span> Droits paid ads inclus</li>
-          <li><span class="ck">✓</span> Analyse algo mensuelle</li>
-          <li><span class="ck">✓</span> Rapport de performance</li>
-          <li><span class="ck">✓</span> Priorité créatrice</li>
         </ul>
         <a href="mailto:hello@ondestudio.be?subject=Offre%20Growth" class="btn btn-grad btn-full">Démarrer <span class="arrow">→</span></a>
       </div>
       <div class="price-card reveal" style="transition-delay:.2s">
         <div class="price-tier">Scale</div>
+        <div class="price-desc">Pour accélérer fort</div>
         <div class="price-amount">€1800 <span>/ mois</span></div>
         <ul class="price-feats">
-          <li><span class="ck">✓</span> 6 vidéos UGC</li>
-          <li><span class="ck">✓</span> Droits exclusifs 12 mois</li>
+          <li><span class="ck">✓</span> 6 vidéos UGC / mois</li>
+          <li><span class="ck">✓</span> Plusieurs créatrices spécialisées</li>
           <li><span class="ck">✓</span> Stratégie contenu complète</li>
-          <li><span class="ck">✓</span> Analyse hebdomadaire</li>
+          <li><span class="ck">✓</span> Analyse hebdomadaire + droits exclusifs</li>
           <li><span class="ck">✓</span> Account manager dédié</li>
         </ul>
         <a href="mailto:hello@ondestudio.be?subject=Offre%20Scale" class="btn btn-line btn-full">Nous contacter</a>
       </div>
     </div>
-    <p class="price-note reveal">Tous nos contrats incluent la cession complète des droits pour vos usages paid et organiques.</p>
+    <p class="price-note reveal">Tous nos contrats incluent la cession complète des droits pour vos usages paid et organiques. Sans engagement long — vous restez parce que ça marche.</p>
   </div>
 </section>
 
-<!-- ── RESULTS / ALGO ── -->
-<section class="sec light" id="results">
-  <div class="wrap results-inner">
-    <div class="results-copy reveal">
-      <div class="eyebrow">Analyse de performance</div>
-      <h2>On ne livre pas juste des vidéos. <span class="acc">On lit les courbes.</span></h2>
-      <p>Chaque mois, vous recevez un rapport clair sur ce qui a marché — et pourquoi. On lit les signaux que l'algorithme valorise vraiment.</p>
-      <ul class="results-list">
-        <li><span class="ic">⏱</span> Temps de visionnage &amp; taux de complétion</li>
-        <li><span class="ic">🎣</span> Performance du hook (3 premières secondes)</li>
-        <li><span class="ic">🔖</span> Taux de sauvegarde (save rate)</li>
-        <li><span class="ic">↗</span> Taux de partage (share rate)</li>
-      </ul>
-      <p class="results-kicker"><span class="acc">Chaque vidéo du mois suivant est brieffée en fonction des données du mois précédent.</span></p>
-    </div>
-
-    <div class="chart-card reveal" style="transition-delay:.1s">
-      <div class="chart-head">
-        <span class="chart-title">Performance · 6 livraisons</span>
-        <span class="chart-tag">● En hausse</span>
-      </div>
-      <div class="chart-sub">Score d'engagement par vidéo (indice 0–100)</div>
-      <svg class="chart-svg" id="bigChart" viewBox="0 0 520 220" preserveAspectRatio="none" aria-hidden="true"></svg>
-      <div class="chart-metrics">
-        <div class="cm"><div class="v" data-count="11" data-suffix=",4s">11,4s</div><div class="d">▲ +28%</div><div class="l">Watch time</div></div>
-        <div class="cm"><div class="v" data-count="64" data-suffix="%">64%</div><div class="d">▲ +12%</div><div class="l">Hook rate</div></div>
-        <div class="cm"><div class="v" data-count="8" data-suffix=",2%">8,2%</div><div class="d">▲ +5%</div><div class="l">Save rate</div></div>
-        <div class="cm"><div class="v" data-count="6" data-suffix=",7%">6,7%</div><div class="d">▲ +19%</div><div class="l">Share rate</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FAQ ── -->
-<section class="sec dark" id="faq">
+<!-- FAQ -->
+<section class="sec light" id="faq">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">Questions fréquentes</div>
-      <h2>Tout ce qu'il faut <span class="acc">savoir</span></h2>
-    </div>
+    <div class="sec-head reveal"><div class="eyebrow">Questions fréquentes</div><h2>Tout ce qu'il faut <span class="acc">savoir</span></h2></div>
     <div class="faq-list">
-      <div class="faq-item reveal"><button class="faq-q">Comment fonctionne la livraison ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Vous nous partagez votre produit et votre brief, nos créatrices filment, on monte et on optimise. Vous recevez vos vidéos finales prêtes à publier directement, dans tous les formats nécessaires (9:16, 1:1, 4:5).</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q">Est-ce que je peux utiliser les vidéos en publicité payante ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Oui. Tous nos contrats incluent la cession complète des droits pour vos usages paid et organiques. Vous pouvez les diffuser sur Meta Ads, TikTok Ads et partout ailleurs, sans frais additionnels.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q">Combien de temps pour recevoir ma première vidéo ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Votre première vidéo est livrée en 5 jours ouvrés à partir de la validation du brief et de la réception du produit. Les contrats mensuels suivent ensuite un calendrier de production régulier.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q">Puis-je choisir ma créatrice ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Absolument. On vous propose les créatrices de notre réseau les plus alignées avec votre marque et votre niche, et vous gardez le dernier mot. Les contrats Growth et Scale bénéficient d'une priorité de sélection.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q">Que se passe-t-il si la vidéo ne me convient pas ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Chaque vidéo inclut au moins une révision. On ajuste le montage, le rythme ou le call-to-action jusqu'à ce que le résultat corresponde à vos attentes et à vos objectifs de performance.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q">Vous travaillez avec quels types de marques ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Principalement des marques e-commerce belges et françaises dans la beauté, la mode, le food, le sport, la tech et le lifestyle. Si vous vendez en ligne et que vous voulez du contenu qui convertit, on est faits pour travailler ensemble.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q">Comment se passe la livraison ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Vous partagez votre produit et votre brief, on assigne une créatrice spécialisée dans votre secteur, elle filme, on monte et on optimise. Vous recevez vos vidéos prêtes à publier dans tous les formats (9:16, 1:1, 4:5).</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q">Comment choisissez-vous la créatrice ? <span class="faq-icon">+</span></button><div class="faq-a"><p>On matche selon votre secteur et votre ton de marque, à partir de notre réseau de créatrices formées par niche. On vous propose la plus alignée — et vous gardez le dernier mot.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q">C'est quoi « La Boucle Onde » ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Notre méthode en 5 temps : Analyse → Stratégie → Création → Test → Rebrief. Concrètement, chaque vidéo du mois suivant est briefée en fonction des données du mois précédent. La performance s'améliore en continu.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q">Puis-je utiliser les vidéos en publicité payante ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Oui. Tous nos contrats incluent la cession complète des droits pour vos usages paid et organiques — Meta Ads, TikTok Ads et partout ailleurs, sans frais additionnels.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q">En combien de temps ma première vidéo ? <span class="faq-icon">+</span></button><div class="faq-a"><p>5 jours ouvrés à partir de la validation du brief et de la réception du produit. Les contrats mensuels suivent ensuite un calendrier de production régulier.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q">Vous travaillez avec quels types de marques ? <span class="faq-icon">+</span></button><div class="faq-a"><p>Les marques e-commerce / DTC belges et françaises qui font de la publicité (Meta, TikTok) : beauté, skincare, mode, food, wellness, sport, tech, lifestyle. Si vous vendez en ligne et voulez du contenu qui convertit, on est faits pour bosser ensemble.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- ── FINAL CTA ── -->
+<!-- FINAL -->
 <section class="sec dark final">
   <svg class="wavefield" id="finalWaves" preserveAspectRatio="none" aria-hidden="true"></svg>
-  <div class="wrap">
-    <div class="reveal">
-      <h2>Prêt à créer du contenu <span class="acc">qui convertit ?</span></h2>
-      <p>Première vidéo livrée en 5 jours. Sans engagement.</p>
-      <a href="mailto:hello@ondestudio.be?subject=Démarrer%20avec%20Onde%20Studio" class="btn btn-solid">Démarrer avec Onde Studio <span class="arrow">→</span></a>
-      <div class="final-mail">Ou écrivez-nous : <a href="mailto:hello@ondestudio.be"><span class="acc">hello@ondestudio.be</span></a></div>
-    </div>
-  </div>
+  <div class="wrap"><div class="reveal">
+    <h2>Prêt à créer du contenu <span class="acc">qui convertit ?</span></h2>
+    <p>Première vidéo livrée en 5 jours. On commence petit, on scale sur les résultats.</p>
+    <a href="mailto:hello@ondestudio.be?subject=Démarrer%20avec%20Onde%20Studio" class="btn btn-solid">Démarrer avec Onde Studio <span class="arrow">→</span></a>
+    <div class="final-mail">Ou écrivez-nous : <a href="mailto:hello@ondestudio.be"><span class="acc">hello@ondestudio.be</span></a></div>
+  </div></div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="footer-inner">
       <div class="footer-brand">
         <a href="#hero" class="logo">Onde <svg class="wave" viewBox="0 0 30 14" fill="none" aria-hidden="true"><path d="M2 7 Q6 1 10 7 T18 7 T26 7" stroke="url(#ondeGrad)" stroke-width="2.4" stroke-linecap="round"/></svg></a>
-        <p>Vidéos UGC authentiques avec de vraies créatrices belges et françaises. Du contenu qui convertit. Vraiment.</p>
+        <p>UGC de performance. Vraies créatrices spécialisées par secteur, créas optimisées sur la data. Du contenu qui convertit. Vraiment.</p>
       </div>
       <div class="footer-links">
-        <div class="footer-col">
-          <h4>Studio</h4>
-          <a href="#pricing">Offres</a><a href="#creators">Créatrices</a><a href="#faq">FAQ</a><a href="mailto:hello@ondestudio.be">Contact</a>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <a href="mailto:hello@ondestudio.be">hello@ondestudio.be</a><a href="#results">Analyse algo</a><a href="#how">La méthode</a>
-        </div>
+        <div class="footer-col"><h4>Studio</h4><a href="#methode">La méthode</a><a href="#matching">Créatrices</a><a href="#pricing">Offres</a><a href="#faq">FAQ</a></div>
+        <div class="footer-col"><h4>Contact</h4><a href="mailto:hello@ondestudio.be">hello@ondestudio.be</a><a href="#results">Data &amp; algo</a><a href="#partnership">Accompagnement</a></div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Onde Studio — Belgium</p>
-      <div class="social">
-        <a href="#" aria-label="Instagram"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-      </div>
+      <p>© 2026 Onde Studio — Belgium</p>
+      <div class="social"><a href="#" aria-label="Instagram"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a></div>
     </div>
   </div>
 </footer>
 
 <script>
-  /* ── Navbar ── */
-  const nav = document.getElementById('nav');
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  const nav=document.getElementById('nav');
+  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>40);
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  const toggle=document.getElementById('navToggle');
+  toggle.addEventListener('click',()=>nav.classList.toggle('menu-open'));
+  document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('menu-open')));
 
-  const toggle = document.getElementById('navToggle');
-  toggle.addEventListener('click', () => nav.classList.toggle('menu-open'));
-  document.querySelectorAll('#navLinks a').forEach(a => a.addEventListener('click', () => nav.classList.remove('menu-open')));
-
-  /* ── Marquee duplicate ── */
-  const track = document.getElementById('track');
+  const track=document.getElementById('track');
   track.parentElement.appendChild(track.cloneNode(true));
 
-  /* ── Wave field generator ── */
-  function buildWaveField(svg, layers, viewW, viewH) {
-    if (!svg) return;
-    svg.setAttribute('viewBox', `0 0 ${viewW} ${viewH}`);
-    const L = 480;
-    const count = Math.ceil(viewW / L) + 2;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    layers.forEach(cfg => {
-      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-      g.setAttribute('class', 'wv-row');
-      let d = `M0 ${cfg.cy}`;
-      for (let i = 0; i < count; i++) {
-        d += ` q ${L/4} ${-2*cfg.amp} ${L/2} 0 q ${L/4} ${2*cfg.amp} ${L/2} 0`;
-      }
-      const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      p.setAttribute('d', d);
-      p.setAttribute('stroke-width', cfg.w);
-      p.setAttribute('opacity', cfg.op);
-      p.setAttribute('stroke-linecap', 'round');
-      g.appendChild(p);
-      if (!reduce) g.style.animation = `flow ${cfg.dur}s linear infinite`;
-      svg.appendChild(g);
+  function buildWaveField(svg,layers,viewW,viewH){
+    if(!svg)return; svg.setAttribute('viewBox',`0 0 ${viewW} ${viewH}`);
+    const L=480,count=Math.ceil(viewW/L)+2,reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    layers.forEach(cfg=>{
+      const g=document.createElementNS('http://www.w3.org/2000/svg','g'); g.setAttribute('class','wv-row');
+      let d=`M0 ${cfg.cy}`;
+      for(let i=0;i<count;i++){ d+=` q ${L/4} ${-2*cfg.amp} ${L/2} 0 q ${L/4} ${2*cfg.amp} ${L/2} 0`; }
+      const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+      p.setAttribute('d',d); p.setAttribute('stroke-width',cfg.w); p.setAttribute('opacity',cfg.op); p.setAttribute('stroke-linecap','round');
+      g.appendChild(p); if(!reduce)g.style.animation=`flow ${cfg.dur}s linear infinite`; svg.appendChild(g);
     });
   }
-  buildWaveField(document.getElementById('heroWaves'), [
-    { cy: 180, amp: 26, w: 1,   op: 0.10, dur: 22 },
-    { cy: 320, amp: 40, w: 1.4, op: 0.16, dur: 30 },
-    { cy: 470, amp: 30, w: 1,   op: 0.08, dur: 26 },
-    { cy: 600, amp: 52, w: 1.6, op: 0.12, dur: 38 },
-  ], 1440, 760);
-  buildWaveField(document.getElementById('finalWaves'), [
-    { cy: 90,  amp: 22, w: 1,   op: 0.10, dur: 24 },
-    { cy: 180, amp: 36, w: 1.3, op: 0.14, dur: 32 },
-    { cy: 280, amp: 26, w: 1,   op: 0.08, dur: 28 },
-  ], 1440, 360);
+  buildWaveField(document.getElementById('heroWaves'),[
+    {cy:180,amp:26,w:1,op:0.10,dur:22},{cy:320,amp:40,w:1.4,op:0.16,dur:30},
+    {cy:470,amp:30,w:1,op:0.08,dur:26},{cy:600,amp:52,w:1.6,op:0.12,dur:38}],1440,760);
+  buildWaveField(document.getElementById('finalWaves'),[
+    {cy:90,amp:22,w:1,op:0.10,dur:24},{cy:180,amp:36,w:1.3,op:0.14,dur:32},{cy:280,amp:26,w:1,op:0.08,dur:28}],1440,360);
 
-  /* ── Hero sparkline ── */
-  (function () {
-    const svg = document.getElementById('heroSpark');
-    if (!svg) return;
-    const pts = [105, 88, 96, 70, 78, 52, 60, 34, 44, 18];
-    const W = 360, H = 120, step = W / (pts.length - 1);
-    let line = `M0 ${pts[0]}`;
-    for (let i = 1; i < pts.length; i++) {
-      const x = i * step, px = (i - 1) * step, cx = (px + x) / 2;
-      line += ` C ${cx} ${pts[i-1]}, ${cx} ${pts[i]}, ${x} ${pts[i]}`;
-    }
-    svg.querySelector('.line').setAttribute('d', line);
-    svg.querySelector('.area').setAttribute('d', line + ` L ${W} ${H} L 0 ${H} Z`);
-    const dot = svg.querySelector('.dot');
-    dot.setAttribute('cx', W); dot.setAttribute('cy', pts[pts.length - 1]);
-    const lp = svg.querySelector('.line'), len = lp.getTotalLength();
-    lp.style.strokeDasharray = len; lp.style.strokeDashoffset = len;
+  (function(){
+    const svg=document.getElementById('heroSpark'); if(!svg)return;
+    const pts=[105,88,96,70,78,52,60,34,44,18],W=360,H=120,step=W/(pts.length-1);
+    let line=`M0 ${pts[0]}`;
+    for(let i=1;i<pts.length;i++){const x=i*step,px=(i-1)*step,cx=(px+x)/2;line+=` C ${cx} ${pts[i-1]}, ${cx} ${pts[i]}, ${x} ${pts[i]}`;}
+    svg.querySelector('.line').setAttribute('d',line);
+    svg.querySelector('.area').setAttribute('d',line+` L ${W} ${H} L 0 ${H} Z`);
+    const dot=svg.querySelector('.dot'); dot.setAttribute('cx',W); dot.setAttribute('cy',pts[pts.length-1]);
+    const lp=svg.querySelector('.line'),len=lp.getTotalLength(); lp.style.strokeDasharray=len; lp.style.strokeDashoffset=len;
   })();
 
-  /* ── Big results chart ── */
-  (function () {
-    const svg = document.getElementById('bigChart');
-    if (!svg) return;
-    const W = 520, H = 220, padL = 8, padR = 8, padT = 14, padB = 26;
-    const data = [38, 52, 47, 71, 64, 92];
-    const labels = ['Janv', 'Févr', 'Mars', 'Avr', 'Mai', 'Juin'];
-    const innerW = W - padL - padR, innerH = H - padT - padB, max = 100;
-    const x = i => padL + (innerW * i) / (data.length - 1);
-    const y = v => padT + innerH - (innerH * v) / max;
-    for (let g = 0; g <= 4; g++) {
-      const gy = padT + (innerH * g) / 4;
-      const ln = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      ln.setAttribute('x1', padL); ln.setAttribute('x2', W - padR);
-      ln.setAttribute('y1', gy); ln.setAttribute('y2', gy);
-      const wrap = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-      wrap.setAttribute('class', 'grid'); wrap.appendChild(ln); svg.appendChild(wrap);
-    }
-    let line = `M ${x(0)} ${y(data[0])}`;
-    for (let i = 1; i < data.length; i++) {
-      const cx = (x(i-1) + x(i)) / 2;
-      line += ` C ${cx} ${y(data[i-1])}, ${cx} ${y(data[i])}, ${x(i)} ${y(data[i])}`;
-    }
-    const ap = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    ap.setAttribute('class', 'carea'); ap.setAttribute('d', line + ` L ${x(data.length-1)} ${padT+innerH} L ${x(0)} ${padT+innerH} Z`); svg.appendChild(ap);
-    const lp = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    lp.setAttribute('class', 'cline'); lp.setAttribute('d', line); svg.appendChild(lp);
-    data.forEach((v, i) => {
-      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      c.setAttribute('cx', x(i)); c.setAttribute('cy', y(v)); c.setAttribute('r', i === data.length-1 ? 5 : 3);
-      c.setAttribute('class', i === data.length-1 ? 'cdot-end' : 'cdot'); svg.appendChild(c);
-    });
-    labels.forEach((lb, i) => {
-      const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      t.setAttribute('x', x(i)); t.setAttribute('y', H - 6);
-      t.setAttribute('text-anchor', i === 0 ? 'start' : i === labels.length-1 ? 'end' : 'middle');
-      t.setAttribute('class', 'axis'); t.textContent = lb; svg.appendChild(t);
-    });
-    const len = lp.getTotalLength();
-    lp.style.strokeDasharray = len; lp.style.strokeDashoffset = len;
+  (function(){
+    const svg=document.getElementById('bigChart'); if(!svg)return;
+    const W=520,H=210,padL=8,padR=8,padT=14,padB=26,data=[38,52,47,71,64,92],labels=['Janv','Févr','Mars','Avr','Mai','Juin'];
+    const innerW=W-padL-padR,innerH=H-padT-padB,max=100;
+    const x=i=>padL+(innerW*i)/(data.length-1),y=v=>padT+innerH-(innerH*v)/max;
+    for(let g=0;g<=4;g++){const gy=padT+(innerH*g)/4;const ln=document.createElementNS('http://www.w3.org/2000/svg','line');ln.setAttribute('x1',padL);ln.setAttribute('x2',W-padR);ln.setAttribute('y1',gy);ln.setAttribute('y2',gy);const wr=document.createElementNS('http://www.w3.org/2000/svg','g');wr.setAttribute('class','grid');wr.appendChild(ln);svg.appendChild(wr);}
+    let line=`M ${x(0)} ${y(data[0])}`;
+    for(let i=1;i<data.length;i++){const cx=(x(i-1)+x(i))/2;line+=` C ${cx} ${y(data[i-1])}, ${cx} ${y(data[i])}, ${x(i)} ${y(data[i])}`;}
+    const ap=document.createElementNS('http://www.w3.org/2000/svg','path');ap.setAttribute('class','carea');ap.setAttribute('d',line+` L ${x(data.length-1)} ${padT+innerH} L ${x(0)} ${padT+innerH} Z`);svg.appendChild(ap);
+    const lp=document.createElementNS('http://www.w3.org/2000/svg','path');lp.setAttribute('class','cline');lp.setAttribute('d',line);svg.appendChild(lp);
+    data.forEach((v,i)=>{const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',x(i));c.setAttribute('cy',y(v));c.setAttribute('r',i===data.length-1?5:3);c.setAttribute('class',i===data.length-1?'cdot-end':'cdot');svg.appendChild(c);});
+    labels.forEach((lb,i)=>{const t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',x(i));t.setAttribute('y',H-6);t.setAttribute('text-anchor',i===0?'start':i===labels.length-1?'end':'middle');t.setAttribute('class','axis');t.textContent=lb;svg.appendChild(t);});
+    const len=lp.getTotalLength();lp.style.strokeDasharray=len;lp.style.strokeDashoffset=len;
   })();
 
-  /* ── Reveal + chart draw + counters ── */
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function drawPath(p){if(!p)return;p.style.transition='stroke-dashoffset 1.6s cubic-bezier(0.16,1,0.3,1)';requestAnimationFrame(()=>{p.style.strokeDashoffset='0';});}
+  function countUp(el){if(el.dataset.done)return;el.dataset.done='1';const target=parseFloat(el.dataset.count),suffix=el.dataset.suffix||'';if(reduce){el.textContent=target+suffix;return;}const dur=1300;let start=null;const tick=ts=>{if(!start)start=ts;const t=Math.min((ts-start)/dur,1),e=1-Math.pow(1-t,3);el.textContent=Math.round(e*target)+suffix;if(t<1)requestAnimationFrame(tick);};requestAnimationFrame(tick);}
 
-  function drawPath(p) {
-    if (!p) return;
-    p.style.transition = 'stroke-dashoffset 1.6s cubic-bezier(0.16,1,0.3,1)';
-    requestAnimationFrame(() => { p.style.strokeDashoffset = '0'; });
-  }
-  function countUp(el) {
-    if (el.dataset.done) return; el.dataset.done = '1';
-    const target = parseFloat(el.dataset.count), suffix = el.dataset.suffix || '';
-    if (reduce) { el.textContent = target + suffix; return; }
-    const dur = 1300; let start = null;
-    const tick = ts => {
-      if (!start) start = ts;
-      const t = Math.min((ts - start) / dur, 1), e = 1 - Math.pow(1 - t, 3);
-      el.textContent = Math.round(e * target) + suffix;
-      if (t < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting)return;
       e.target.classList.add('in');
       e.target.querySelectorAll('[data-count]').forEach(countUp);
+      const mf=e.target.querySelector('.meter-fill'); if(mf&&!mf.dataset.done){mf.dataset.done='1';mf.style.width=mf.dataset.level+'%';}
       io.unobserve(e.target);
     });
-  }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  },{threshold:0.14,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  document.querySelectorAll('.hero-meta [data-count]').forEach(el => {
-    const o = new IntersectionObserver((en) => { en.forEach(x => { if (x.isIntersecting) { countUp(el); o.unobserve(el); } }); }, { threshold: 0.5 });
-    o.observe(el);
-  });
+  document.querySelectorAll('.hero-meta [data-count]').forEach(el=>{const o=new IntersectionObserver((en)=>{en.forEach(x=>{if(x.isIntersecting){countUp(el);o.unobserve(el);}});},{threshold:0.5});o.observe(el);});
 
-  function whenVisible(el, cb, th) {
-    if (!el) return;
-    const o = new IntersectionObserver((en) => { en.forEach(x => { if (x.isIntersecting) { cb(); o.unobserve(el); } }); }, { threshold: th || 0.3 });
-    o.observe(el);
-  }
-  whenVisible(document.querySelector('.panel'), () => {
-    drawPath(document.querySelector('#heroSpark .line'));
-    const area = document.querySelector('#heroSpark .area');
-    if (area) setTimeout(() => area.style.opacity = 1, 500);
-  });
-  whenVisible(document.getElementById('bigChart'), () => {
-    drawPath(document.querySelector('#bigChart .cline'));
-    const area = document.querySelector('#bigChart .carea');
-    if (area) area.style.opacity = 1;
-  });
+  function whenVisible(el,cb,th){if(!el)return;const o=new IntersectionObserver((en)=>{en.forEach(x=>{if(x.isIntersecting){cb();o.unobserve(el);}});},{threshold:th||0.3});o.observe(el);}
+  whenVisible(document.querySelector('.panel'),()=>{drawPath(document.querySelector('#heroSpark .line'));const a=document.querySelector('#heroSpark .area');if(a)setTimeout(()=>a.style.opacity=1,500);});
+  whenVisible(document.getElementById('bigChart'),()=>{drawPath(document.querySelector('#bigChart .cline'));const a=document.querySelector('#bigChart .carea');if(a)a.style.opacity=1;});
 
-  /* ── FAQ accordion ── */
-  document.querySelectorAll('.faq-q').forEach(q => {
-    q.addEventListener('click', () => {
-      const item = q.parentElement, ans = q.nextElementSibling, open = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; });
-      if (!open) { item.classList.add('open'); ans.style.maxHeight = ans.scrollHeight + 'px'; }
-    });
-  });
+  document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{const item=q.parentElement,ans=q.nextElementSibling,open=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null;});if(!open){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}});});
 </script>
 </body>
 </html>
