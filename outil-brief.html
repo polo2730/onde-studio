@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Générateur de Brief — Onde Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0B0B0C;--ink-2:#141416;--ink-3:#1C1C1F;--paper:#FAFAF8;--mut:rgba(250,250,248,0.55);--dim:rgba(250,250,248,0.32);--line:rgba(250,250,248,0.12);--line2:rgba(250,250,248,0.22);--acc1:#6E8BFF;--acc2:#C4B5FD;--grad:linear-gradient(90deg,#6E8BFF,#C4B5FD);--ok:#6EE7A8;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--ink);color:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .top{border-bottom:1px solid var(--line);padding:20px 24px;display:flex;align-items:center;gap:10px;position:sticky;top:0;background:rgba(11,11,12,0.9);backdrop-filter:blur(12px);z-index:10;}
+  .logo{font-family:'Space Grotesk';font-weight:700;font-size:19px;}
+  .logo .a{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .top .tag{font-family:'Geist Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-left:6px;}
+  .wrap{max-width:1080px;margin:0 auto;padding:30px 24px 80px;display:grid;grid-template-columns:1fr 1fr;gap:30px;}
+  @media(max-width:880px){.wrap{grid-template-columns:1fr;}}
+  h1{font-family:'Space Grotesk';font-size:26px;letter-spacing:-0.02em;margin-bottom:4px;}
+  .sub{color:var(--mut);font-size:14px;margin-bottom:26px;}
+  .card{background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:24px;}
+  label{display:block;font-family:'Geist Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin:16px 0 7px;}
+  input,select,textarea{width:100%;background:rgba(250,250,248,0.04);border:1px solid var(--line);border-radius:9px;padding:11px 13px;font-family:'Inter';font-size:14px;color:var(--paper);outline:none;transition:border-color .2s;}
+  input:focus,select:focus,textarea:focus{border-color:var(--acc1);}
+  select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath stroke='%239aa3bd' stroke-linecap='round' stroke-width='1.5' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:32px;}
+  option{background:var(--ink-2);}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+  .chip{font-size:12px;padding:7px 13px;border:1px solid var(--line);border-radius:100px;cursor:pointer;transition:all .2s;color:var(--mut);user-select:none;}
+  .chip.on{background:rgba(110,139,255,0.14);border-color:var(--acc1);color:var(--acc2);}
+  .intel{margin-top:18px;border-top:1px solid var(--line);padding-top:16px;}
+  .intel h3{font-family:'Geist Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc1);margin-bottom:8px;}
+  .intel .hooklist{display:flex;flex-direction:column;gap:6px;}
+  .hookopt{font-size:13px;color:var(--mut);padding:8px 11px;border:1px solid var(--line);border-radius:8px;cursor:pointer;transition:all .2s;}
+  .hookopt:hover{border-color:var(--line2);color:var(--paper);}
+  .hookopt.on{border-color:var(--acc1);background:rgba(110,139,255,0.08);color:var(--paper);}
+  .match{margin-top:18px;background:rgba(110,139,255,0.06);border:1px solid rgba(110,139,255,0.25);border-radius:12px;padding:14px 16px;}
+  .match .mt{font-family:'Geist Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc1);margin-bottom:6px;}
+  .match .mn{font-family:'Space Grotesk';font-weight:700;font-size:18px;}
+  .match .mr{font-size:13px;color:var(--mut);margin-top:3px;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:14px;border:none;border-radius:100px;padding:13px 22px;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s;}
+  .btn-g{background:var(--grad);color:#0B0B0C;width:100%;margin-top:22px;}
+  .btn-g:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(110,139,255,0.3);}
+  .out{background:var(--ink-3);border:1px solid var(--line);border-radius:16px;padding:26px;font-family:'Geist Mono';font-size:12.5px;line-height:1.85;white-space:pre-wrap;color:rgba(250,250,248,0.82);min-height:300px;}
+  .out.empty{display:flex;align-items:center;justify-content:center;text-align:center;color:var(--dim);font-family:'Inter';}
+  .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+  .btn-o{background:rgba(250,250,248,0.06);color:var(--paper);border:1px solid var(--line2);}
+  .btn-o:hover{background:rgba(250,250,248,0.12);}
+  .btn-wa{background:#25D366;color:#fff;}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink-2);border:1px solid var(--line2);border-radius:100px;padding:11px 22px;font-size:14px;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(-4px);}
+  .avail{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--mut);margin-top:8px;cursor:pointer;}
+  .avail input{width:auto;}
+</style>
+</head>
+<body>
+  <div class="top"><span class="logo">Onde <span class="a">Studio</span></span><span class="tag">Générateur de brief</span></div>
+  <div class="wrap">
+    <!-- LEFT : form -->
+    <div>
+      <h1>Brief créatrice</h1>
+      <p class="sub">Entre la marque + le secteur. L'outil sort le brief optimisé pour ce secteur et te propose la créatrice la plus adaptée.</p>
+      <div class="card">
+        <div class="row">
+          <div><label>Marque</label><input id="brand" placeholder="Maison Jolie"></div>
+          <div><label>Produit</label><input id="product" placeholder="Sérum Vitamine C"></div>
+        </div>
+        <label>Secteur (définit les hooks &amp; la créatrice)</label>
+        <select id="sector"></select>
+
+        <label>Objectif</label>
+        <div class="chips" id="obj"></div>
+
+        <div class="row" style="margin-top:6px">
+          <div><label>Plateforme</label><select id="platform"><option>TikTok</option><option>Reels</option><option>Les deux</option></select></div>
+          <div><label>Durée</label><select id="duration"><option>15-25s</option><option selected>25-40s</option><option>40-60s</option></select></div>
+        </div>
+
+        <div class="intel" id="intel"></div>
+
+        <label>Hook d'ouverture (choisi ou écris le tien)</label>
+        <textarea id="hook" rows="2" placeholder="Le hook de tes 3 premières secondes…"></textarea>
+
+        <div class="match" id="match"></div>
+        <label class="avail"><input type="checkbox" id="onlyAvail"> Ne proposer que les créatrices disponibles</label>
+
+        <div class="row" style="margin-top:6px">
+          <div><label>Deadline</label><input id="deadline" type="date"></div>
+          <div><label>Rémunération créatrice (€)</label><input id="pay" type="number" placeholder="130"></div>
+        </div>
+
+        <button class="btn btn-g" onclick="generate()">⚡ Générer le brief</button>
+      </div>
+    </div>
+
+    <!-- RIGHT : output -->
+    <div>
+      <h1>Le document</h1>
+      <p class="sub">Prêt à envoyer à ta créatrice. Copie, WhatsApp ou imprime en PDF.</p>
+      <div class="out empty" id="out">Remplis le formulaire puis clique « Générer le brief ».</div>
+      <div class="acts" id="acts" style="display:none">
+        <button class="btn btn-o" onclick="copyBrief()">📋 Copier</button>
+        <button class="btn btn-wa" onclick="waBrief()">💬 WhatsApp</button>
+        <button class="btn btn-o" onclick="window.print()">🖨️ PDF</button>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+
+<script>
+/* ── Intelligence secteur : ce qui marche par niche ── */
+const SECTORS = {
+  beaute: { label:"Beauté / Skincare",
+    hooks:["POV : tu trouves enfin un soin qui tient ses promesses…","J'ai testé [produit] pendant 14 jours — le résultat 👇","3 erreurs skincare que tu fais sans le savoir","Ma routine du matin a changé grâce à ça"],
+    angles:["Texture & application en gros plan (ASMR léger)","Avant / après crédible sur peau réelle","Routine intégrée au quotidien","Problème de peau → solution"],
+    algo:"Montre la TEXTURE et l'application en gros plan dès la 1ʳᵉ seconde — c'est ça qui retient. Les avant/après génèrent le plus de sauvegardes (save rate).",
+    dos:["Lumière naturelle (fenêtre)","Peau réelle, pas de filtre lissant","Produit visible dès la 1ʳᵉ seconde","Sous-titres"],
+    donts:["Promesses médicales / anti-âge non prouvées","Ton pub récité","Sur-maquillage"] },
+  food: { label:"Food / Boisson",
+    hooks:["Le truc que je prépare quand j'ai 0 temps…","J'étais sceptique mais…","Recette virale testée : verdict","Tu fais cette erreur en cuisine ?"],
+    angles:["Plan macro appétissant (le 'food porn')","Préparation rapide en accéléré","Réaction / première bouchée","Routine healthy crédible"],
+    algo:"Le plan macro gourmand dans les 3 premières secondes = rétention max. Les recettes 'sauvables' explosent le save rate. Son ASMR (croustillant, versé) booste le watch-time.",
+    dos:["Lumière chaude, gros plans","Mouvement (on verse, on coupe, on croque)","Format rapide, rythmé","Sous-titres"],
+    donts:["Plans statiques longs","Trop de blabla avant la nourriture","Allégations nutrition non vérifiées"] },
+  wellness: { label:"Wellness / Compléments",
+    hooks:["Ce que j'ai changé dans ma routine et qui a tout changé…","30 jours de [produit] : mon ressenti honnête","Si tu es toujours fatigué·e, regarde ça","Mon rituel du soir pour mieux dormir"],
+    angles:["Témoignage authentique sur le ressenti","Rituel intégré (matin / soir)","Avant / après sur l'énergie, le sommeil","Démystification d'une croyance"],
+    algo:"L'authenticité prime : un vrai visage qui parle de son ressenti génère la confiance → partages. Les rituels 'à copier' boostent les sauvegardes.",
+    dos:["Ton sincère, premier degré","Mise en situation réelle (lit, cuisine)","Vrai témoignage","Sous-titres"],
+    donts:["⚠️ Aucune allégation santé/médicale non autorisée","Promesses miracles","Ton trop commercial"] },
+  mode: { label:"Mode / Lifestyle premium",
+    hooks:["Get ready with me pour…","La pièce qui change toute la tenue","J'ai trouvé LE basique parfait","3 façons de porter…"],
+    angles:["GRWM (get ready with me)","Try-on / plusieurs looks","Détail produit & matière en gros plan","Mise en situation lifestyle"],
+    algo:"Le mouvement et le 'try-on' retiennent. Les '3 façons de porter' = format save-friendly. Esthétique soignée = partages.",
+    dos:["Lumière flatteuse, cadrage soigné","Montrer la matière / le tombé","Plusieurs angles","Sous-titres"],
+    donts:["Plans figés","Décor négligé","Ton catalogue"] },
+  tech: { label:"Tech / Apps / Gadgets",
+    hooks:["Le gadget que tout le monde me demande…","J'ai remplacé [X] par ça et…","Tu utilises encore [méthode] ? Regarde","Setup check : l'objet qui change tout"],
+    angles:["Démo claire du bénéfice (problème → solution)","Unboxing rapide + 1ʳᵉ utilisation","Avant/après productivité","Cas d'usage concret"],
+    algo:"Montre le BÉNÉFICE concret dans les 3 premières secondes, pas les specs. La démo 'problème résolu' génère les partages. Clarté = watch-time.",
+    dos:["Démo concrète et rapide","Bénéfice avant fonctionnalité","Bon son, bonne lumière","Sous-titres"],
+    donts:["Liste de specs ennuyeuse","Jargon","Intro trop longue"] },
+  lifestyle: { label:"Lifestyle / Divers",
+    hooks:["Un truc simple qui a amélioré mon quotidien…","POV : tu découvres…","Personne ne parle de ça mais…","Ma petite routine du moment"],
+    angles:["Mise en situation quotidienne","Storytelling personnel","Avant / après","Recommandation d'amie"],
+    algo:"L'angle 'recommandation d'amie' crée la confiance. Un hook curiosité fort retient. Le relatable génère les partages.",
+    dos:["Ton naturel, authentique","Cadre de vie réel","Hook curiosité fort","Sous-titres"],
+    donts:["Ton pub","Trop scénarisé","Produit caché trop longtemps"] }
+};
+
+/* ── Roster créatrices ── */
+const CREATORS = [
+  { name:"Sophie", spec:"beaute",   tag:"Beauté",   status:"disponible" },
+  { name:"Marie",  spec:"beaute",   tag:"Beauté",   status:"disponible" },
+  { name:"Emma",   spec:"food",     tag:"Food",     status:"disponible" },
+  { name:"Inès",   spec:"wellness", tag:"Wellness", status:"en_mission" },
+  { name:"Chloé",  spec:"mode",     tag:"Mode",     status:"disponible" },
+  { name:"Léa",    spec:"tech",     tag:"Tech",     status:"disponible" },
+];
+
+const OBJECTIVES = ["Notoriété","Conversion","Témoignage"];
+let selObj = "Conversion", selHook = "";
+
+/* ── Init UI ── */
+const sectorSel = document.getElementById('sector');
+Object.entries(SECTORS).forEach(([k,v])=>{const o=document.createElement('option');o.value=k;o.textContent=v.label;sectorSel.appendChild(o);});
+const objWrap = document.getElementById('obj');
+OBJECTIVES.forEach(o=>{const c=document.createElement('div');c.className='chip'+(o===selObj?' on':'');c.textContent=o;c.onclick=()=>{selObj=o;[...objWrap.children].forEach(x=>x.classList.toggle('on',x.textContent===o));};objWrap.appendChild(c);});
+
+function renderIntel(){
+  const s=SECTORS[sectorSel.value];
+  document.getElementById('intel').innerHTML=
+    `<h3>Ce qui marche en ${s.label}</h3>
+     <div style="font-size:13px;color:var(--mut);margin-bottom:12px">${s.algo}</div>
+     <h3>Hooks qui performent — clique pour utiliser</h3>
+     <div class="hooklist">${s.hooks.map(h=>`<div class="hookopt" onclick="pickHook(this)">${h}</div>`).join('')}</div>`;
+  renderMatch();
+}
+function pickHook(el){selHook=el.textContent;document.getElementById('hook').value=el.textContent;document.querySelectorAll('.hookopt').forEach(x=>x.classList.remove('on'));el.classList.add('on');}
+function renderMatch(){
+  const sec=sectorSel.value, onlyAvail=document.getElementById('onlyAvail').checked;
+  let pool=CREATORS.filter(c=>c.spec===sec);
+  if(onlyAvail)pool=pool.filter(c=>c.status==='disponible');
+  let pick=pool[0];
+  let reason;
+  if(pick){reason=`Spécialisée ${SECTORS[sec].label} · ${pick.status==='disponible'?'disponible ✅':'en mission ⏳'}`;}
+  else{ // pas de spé dispo → fallback dispo
+    const avail=CREATORS.filter(c=>c.status==='disponible');pick=avail[0];
+    reason=pick?`Pas de spécialiste ${SECTORS[sec].tag} dispo → ${pick.name} (${pick.tag}) est libre et polyvalente`:'Aucune créatrice disponible';
+  }
+  document.getElementById('match').innerHTML = pick
+    ? `<div class="mt">Créatrice recommandée</div><div class="mn">${pick.name}</div><div class="mr">${reason}</div>`
+    : `<div class="mt">Créatrice</div><div class="mr">Aucune dispo — élargis le réseau.</div>`;
+  document.getElementById('match').dataset.creator = pick?pick.name:'—';
+}
+sectorSel.onchange=renderIntel;
+document.getElementById('onlyAvail').onchange=renderMatch;
+document.getElementById('hook').oninput=e=>{selHook=e.target.value;};
+renderIntel();
+
+/* ── Génération du brief ── */
+let briefText='';
+function fmtDate(v){if(!v)return'à définir';const[y,m,d]=v.split('-');const M=['jan','fév','mar','avr','mai','juin','juil','aoû','sep','oct','nov','déc'];return`${+d} ${M[+m-1]}`;}
+function generate(){
+  const s=SECTORS[sectorSel.value];
+  const brand=val('brand')||'[Marque]', product=val('product')||'[Produit]';
+  const hook=val('hook')||s.hooks[0];
+  const creator=document.getElementById('match').dataset.creator||'[Créatrice]';
+  const dur=val('duration'), durMax=dur.split('-')[1]?.replace('s','')||'40';
+  const pay=val('pay')||'…', deadline=fmtDate(val('deadline'));
+  const today=new Date().toLocaleDateString('fr-BE');
+  const bar='─'.repeat(46);
+  briefText=
+`ONDE STUDIO — BRIEF VIDÉO                 ${today}
+${bar}
+
+POUR        ${creator}
+MARQUE      ${brand}
+PRODUIT     ${product}
+OBJECTIF    ${selObj}
+FORMAT      ${dur} · 9:16 · ${val('platform')}
+DEADLINE    ${deadline} à 18h · Rému : ${pay}€ (payé sous 72h)
+
+${bar}
+🎬 HOOK (tes 3 premières secondes — LE plus important)
+Commence exactement par :
+« ${hook} »
+
+${bar}
+🎯 ANGLES QUI MARCHENT EN ${s.label.toUpperCase()}
+${s.angles.map(a=>'• '+a).join('\n')}
+
+${bar}
+⏱️ STRUCTURE
+0–3s    Hook + produit visible immédiatement
+3–10s   Le contexte / le problème
+10–${Math.round(durMax*0.6)}s  Présentation naturelle du produit
+${Math.round(durMax*0.6)}–${durMax}s  Résultat + CTA (« lien en bio »)
+
+${bar}
+📊 CE QUE L'ALGO RÉCOMPENSE
+${s.algo}
+
+${bar}
+✅ À FAIRE
+${s.dos.map(d=>'• '+d).join('\n')}
+
+🚫 À ÉVITER
+${s.donts.map(d=>'• '+d).join('\n')}
+
+${bar}
+📦 LIVRAISON
+• Vidéo brute + montée, format 9:16
+• 1 révision incluse
+• Dépose le fichier dans le dossier partagé
+
+Des questions ? Écris-moi. On compte sur toi 💪
+Onde Studio · @ondestudio.off`;
+  const out=document.getElementById('out');
+  out.classList.remove('empty');out.textContent=briefText;
+  document.getElementById('acts').style.display='flex';
+}
+function val(id){return document.getElementById(id).value.trim();}
+function copyBrief(){navigator.clipboard.writeText(briefText).then(()=>toast('Brief copié ✅'));}
+function waBrief(){window.open('https://wa.me/?text='+encodeURIComponent(briefText),'_blank');}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+window.pickHook=pickHook;window.generate=generate;window.copyBrief=copyBrief;window.waBrief=waBrief;
+</script>
+</body>
+</html>
