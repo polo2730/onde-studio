@@ -74,7 +74,7 @@
   /* Atmosphère futuriste : vagues lumineuses + maillage data + grain */
   .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
   .mesh{position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(110,139,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(110,139,255,0.06) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse 78% 68% at 62% 42%,#000,transparent 80%);mask-image:radial-gradient(ellipse 78% 68% at 62% 42%,#000,transparent 80%);}
-  .digits{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.5;}
+  .digits{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.72;}
   .hero .wavefield,.final .wavefield{filter:drop-shadow(0 0 7px rgba(110,139,255,0.5)) drop-shadow(0 0 20px rgba(138,173,255,0.22));}
   .hero-glow2{position:absolute;width:540px;height:540px;border-radius:50%;bottom:-200px;left:-150px;background:radial-gradient(circle,rgba(196,181,253,0.13),transparent 65%);filter:blur(50px);z-index:0;}
 
@@ -611,25 +611,30 @@
   buildWaveField(document.getElementById('finalWaves'),[
     {cy:90,amp:22,w:1,op:0.14,dur:24},{cy:180,amp:36,w:1.5,op:0.26,dur:32},{cy:280,amp:26,w:1,op:0.12,dur:28}],1440,360);
 
-  /* Chiffres binaires en fond (ambiance algorithme, subtil) */
+  /* Pluie de chiffres binaires — cascade futuriste (têtes lumineuses + traînées) */
   (function(){
     const c=document.getElementById('heroDigits'); if(!c) return;
     const ctx=c.getContext('2d'); const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let W,H,cols,drops; const step=28;
-    function resize(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;cols=Math.ceil(W/step);drops=Array.from({length:cols},()=>Math.random()*H);}
+    const step=20; let W,H,cols,streams;
+    function mk(){ return {y:Math.random()*-200, sp:18+Math.random()*26, len:6+Math.floor(Math.random()*14)}; }
+    function resize(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;cols=Math.ceil(W/step)+1;streams=Array.from({length:cols},mk);}
     resize(); window.addEventListener('resize',resize,{passive:true});
-    function draw(moving){
-      ctx.clearRect(0,0,W,H); ctx.font='12px "Geist Mono", ui-monospace, monospace';
+    function tick(){
+      ctx.clearRect(0,0,W,H); ctx.font='13px "Geist Mono", ui-monospace, monospace';
       for(let i=0;i<cols;i++){
-        if(Math.random()>0.34) continue;
-        const a=0.07+Math.random()*0.10;
-        ctx.fillStyle='rgba(138,173,255,'+a+')';
-        ctx.fillText(Math.random()<0.5?'0':'1', i*step, drops[i]);
-        if(moving){ drops[i]+=0.4+Math.random()*0.6; if(drops[i]>H) drops[i]=-8; }
+        const s=streams[i], x=i*step;
+        for(let k=0;k<s.len;k++){
+          const y=s.y-k*step; if(y<-step||y>H) continue;
+          if(k===0) ctx.fillStyle='rgba(210,222,255,0.92)';
+          else ctx.fillStyle='rgba(138,173,255,'+(0.5*(1-k/s.len)).toFixed(3)+')';
+          ctx.fillText(Math.random()<0.5?'0':'1', x, y);
+        }
+        s.y+=s.sp; if(s.y-s.len*step>H){ streams[i]=mk(); streams[i].y=-Math.random()*120; }
       }
     }
-    if(reduce){ draw(false); }
-    else{ (function loop(){ draw(true); requestAnimationFrame(loop); })(); }
+    function still(){ ctx.font='13px "Geist Mono", ui-monospace, monospace';
+      for(let i=0;i<cols;i++) for(let y=Math.random()*step;y<H;y+=step){ if(Math.random()>0.5) continue; ctx.fillStyle='rgba(138,173,255,0.24)'; ctx.fillText(Math.random()<0.5?'0':'1', i*step, y);} }
+    reduce?still():setInterval(tick,70);
   })();
 
   (function(){
