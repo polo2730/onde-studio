@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cockpit Onde — Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0B0B0C;--ink2:#141416;--ink3:#1C1C1F;--paper:#FAFAF8;--mut:rgba(250,250,248,0.6);--dim:rgba(250,250,248,0.38);--line:rgba(250,250,248,0.13);--acc1:#6E8BFF;--acc2:#C4B5FD;--grad:linear-gradient(90deg,#6E8BFF,#C4B5FD);--ok:#6EE7A8;--warn:#E8C766;--err:#E08080;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--paper);-webkit-font-smoothing:antialiased;}
+  .top{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(11,11,12,0.92);backdrop-filter:blur(12px);z-index:10;}
+  .logo{font-family:'Space Grotesk';font-weight:700;font-size:18px;}.logo .a{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .top .s{font-size:12px;color:var(--dim);}
+  .wrap{max-width:1080px;margin:0 auto;padding:24px 18px 80px;}
+  h2{font-family:'Space Grotesk';font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:30px 0 12px;}
+  /* Daily */
+  .daily{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .counter{background:var(--ink2);border:1px solid var(--line);border-radius:14px;padding:18px;}
+  .counter .lbl{font-size:13px;color:var(--mut);}
+  .counter .row{display:flex;align-items:center;justify-content:space-between;margin-top:8px;}
+  .counter .val{font-family:'Space Grotesk';font-size:34px;font-weight:700;}
+  .counter .goal{font-size:12px;color:var(--dim);}
+  .cbtns{display:flex;gap:8px;}
+  .cbtn{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:rgba(250,250,248,0.05);color:var(--paper);font-size:20px;cursor:pointer;transition:.2s;}
+  .cbtn:hover{background:rgba(250,250,248,0.12);}
+  .cbtn.plus{background:var(--grad);color:#0B0B0C;border:none;}
+  .bar{height:6px;background:rgba(250,250,248,0.08);border-radius:100px;margin-top:12px;overflow:hidden;}
+  .bar i{display:block;height:100%;background:var(--grad);border-radius:100px;transition:width .3s;}
+  /* Stats funnel */
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+  .stat{background:var(--ink2);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center;}
+  .stat .v{font-family:'Space Grotesk';font-size:26px;font-weight:700;}
+  .stat .l{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);margin-top:4px;}
+  .stat .pct{font-size:11px;color:var(--acc2);margin-top:2px;}
+  .rev{background:linear-gradient(135deg,rgba(110,139,255,0.12),rgba(196,181,253,0.05));border-color:rgba(110,139,255,0.3);}
+  /* Add form */
+  .addbar{display:flex;gap:8px;flex-wrap:wrap;background:var(--ink2);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:14px;}
+  .addbar input,.addbar select{background:rgba(250,250,248,0.05);border:1px solid var(--line);border-radius:8px;padding:9px 11px;color:var(--paper);font-family:'Inter';font-size:13px;outline:none;}
+  .addbar input{flex:1;min-width:120px;}
+  .addbar input:focus,.addbar select:focus{border-color:var(--acc1);}
+  .addbar button{background:var(--grad);color:#0B0B0C;border:none;border-radius:8px;padding:0 18px;font-weight:600;font-size:13px;cursor:pointer;}
+  /* Table */
+  table{width:100%;border-collapse:collapse;}
+  th{font-family:'Geist Mono';font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);}
+  td{padding:10px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:middle;}
+  tr:hover td{background:rgba(250,250,248,0.02);}
+  .stsel{background:transparent;border:1px solid var(--line);border-radius:100px;padding:4px 10px;font-size:11px;color:var(--paper);font-family:'Inter';cursor:pointer;outline:none;}
+  .del{background:none;border:none;color:var(--dim);cursor:pointer;font-size:16px;}.del:hover{color:var(--err);}
+  .empty{text-align:center;color:var(--dim);padding:30px;font-size:14px;}
+  .hint{font-size:12px;color:var(--dim);margin-top:8px;}
+  .reset{font-size:11px;color:var(--dim);background:none;border:1px solid var(--line);border-radius:8px;padding:5px 10px;cursor:pointer;}
+</style>
+</head>
+<body>
+  <div class="top"><div class="logo">Onde <span class="a">Cockpit</span></div><div class="s" id="today"></div></div>
+  <div class="wrap">
+
+    <h2>Aujourd'hui</h2>
+    <div class="daily">
+      <div class="counter">
+        <div class="lbl">DM Instagram envoyés</div>
+        <div class="row"><div class="val" id="dmVal">0</div>
+          <div class="cbtns"><button class="cbtn" onclick="bump('dm',-1)">−</button><button class="cbtn plus" onclick="bump('dm',1)">+</button></div>
+        </div>
+        <div class="goal">Objectif : 15/jour</div><div class="bar"><i id="dmBar"></i></div>
+      </div>
+      <div class="counter">
+        <div class="lbl">Emails envoyés</div>
+        <div class="row"><div class="val" id="emVal">0</div>
+          <div class="cbtns"><button class="cbtn" onclick="bump('em',-1)">−</button><button class="cbtn plus" onclick="bump('em',1)">+</button></div>
+        </div>
+        <div class="goal">Objectif : 10/jour</div><div class="bar"><i id="emBar"></i></div>
+      </div>
+    </div>
+    <div class="hint">Les compteurs du jour se remettent à 0 chaque matin. Le total alimente tes stats ↓</div>
+
+    <h2>Ton tunnel (live)</h2>
+    <div class="stats">
+      <div class="stat"><div class="v" id="sContact">0</div><div class="l">Contactés</div></div>
+      <div class="stat"><div class="v" id="sRep">0</div><div class="l">Réponses</div><div class="pct" id="pRep">—</div></div>
+      <div class="stat"><div class="v" id="sAudit">0</div><div class="l">Audits</div><div class="pct" id="pAudit">—</div></div>
+      <div class="stat"><div class="v" id="sClient">0</div><div class="l">Clients</div><div class="pct" id="pClient">—</div></div>
+      <div class="stat rev"><div class="v" id="sRev">0 €</div><div class="l">CA estimé</div></div>
+    </div>
+
+    <h2>Pipeline prospects</h2>
+    <div class="addbar">
+      <input id="pName" placeholder="Nom de la marque">
+      <input id="pSector" placeholder="Secteur (beauté…)">
+      <select id="pChan"><option>DM</option><option>Email</option><option>DM+Email</option></select>
+      <button onclick="addProspect()">+ Ajouter</button>
+    </div>
+    <table>
+      <thead><tr><th>Marque</th><th>Secteur</th><th>Canal</th><th>Statut</th><th>Ajouté</th><th></th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="empty">Aucun prospect. Ajoute ta première marque repérée 👆</div>
+    <div style="margin-top:24px"><button class="reset" onclick="resetAll()">↺ Tout réinitialiser</button></div>
+  </div>
+
+<script>
+  const STATUSES=["À contacter","Contacté","Répondu","Audit envoyé","En discussion","Client ✅","Perdu"];
+  const REVENUE_PER_CLIENT=350; // Test Pack par défaut
+  const todayStr=new Date().toLocaleDateString('fr-BE',{weekday:'long',day:'numeric',month:'long'});
+  document.getElementById('today').textContent=todayStr;
+
+  function load(k,d){try{return JSON.parse(localStorage.getItem(k))??d;}catch(e){return d;}}
+  function save(k,v){localStorage.setItem(k,JSON.stringify(v));}
+
+  // Daily counters (reset par jour)
+  let daily=load('onde_daily',{date:'',dm:0,em:0});
+  const dkey=new Date().toISOString().slice(0,10);
+  if(daily.date!==dkey){daily={date:dkey,dm:0,em:0};save('onde_daily',daily);}
+  function bump(t,n){daily[t]=Math.max(0,daily[t]+n);save('onde_daily',daily);renderDaily();}
+  function renderDaily(){
+    document.getElementById('dmVal').textContent=daily.dm;
+    document.getElementById('emVal').textContent=daily.em;
+    document.getElementById('dmBar').style.width=Math.min(100,daily.dm/15*100)+'%';
+    document.getElementById('emBar').style.width=Math.min(100,daily.em/10*100)+'%';
+  }
+
+  // Prospects
+  let prospects=load('onde_prospects',[]);
+  function addProspect(){
+    const name=document.getElementById('pName').value.trim();if(!name)return;
+    prospects.unshift({id:Date.now(),name,sector:document.getElementById('pSector').value.trim(),chan:document.getElementById('pChan').value,status:"Contacté",date:new Date().toLocaleDateString('fr-BE')});
+    save('onde_prospects',prospects);
+    document.getElementById('pName').value='';document.getElementById('pSector').value='';
+    render();
+  }
+  function setStatus(id,s){const p=prospects.find(x=>x.id===id);if(p){p.status=s;save('onde_prospects',prospects);renderStats();}}
+  function del(id){prospects=prospects.filter(x=>x.id!==id);save('onde_prospects',prospects);render();}
+  function render(){
+    const rows=document.getElementById('rows');
+    document.getElementById('empty').style.display=prospects.length?'none':'block';
+    rows.innerHTML=prospects.map(p=>`<tr>
+      <td style="font-weight:600">${esc(p.name)}</td>
+      <td style="color:var(--mut)">${esc(p.sector)||'—'}</td>
+      <td style="color:var(--mut)">${p.chan}</td>
+      <td><select class="stsel" onchange="setStatus(${p.id},this.value)">${STATUSES.map(s=>`<option ${s===p.status?'selected':''}>${s}</option>`).join('')}</select></td>
+      <td style="color:var(--dim)">${p.date}</td>
+      <td><button class="del" onclick="del(${p.id})">×</button></td>
+    </tr>`).join('');
+    renderStats();
+  }
+  function renderStats(){
+    const contacted=prospects.filter(p=>p.status!=="À contacter").length;
+    const replied=prospects.filter(p=>["Répondu","Audit envoyé","En discussion","Client ✅"].includes(p.status)).length;
+    const audits=prospects.filter(p=>["Audit envoyé","En discussion","Client ✅"].includes(p.status)).length;
+    const clients=prospects.filter(p=>p.status==="Client ✅").length;
+    document.getElementById('sContact').textContent=contacted;
+    document.getElementById('sRep').textContent=replied;
+    document.getElementById('sAudit').textContent=audits;
+    document.getElementById('sClient').textContent=clients;
+    document.getElementById('sRev').textContent=(clients*REVENUE_PER_CLIENT).toLocaleString('fr-BE')+' €';
+    document.getElementById('pRep').textContent=contacted?Math.round(replied/contacted*100)+'%':'—';
+    document.getElementById('pAudit').textContent=replied?Math.round(audits/replied*100)+'%':'—';
+    document.getElementById('pClient').textContent=audits?Math.round(clients/audits*100)+'%':'—';
+  }
+  function resetAll(){if(confirm('Tout effacer (prospects + compteurs) ?')){localStorage.removeItem('onde_prospects');localStorage.removeItem('onde_daily');location.reload();}}
+  function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+  window.bump=bump;window.addProspect=addProspect;window.setStatus=setStatus;window.del=del;window.resetAll=resetAll;
+  renderDaily();render();
+</script>
+</body>
+</html>
